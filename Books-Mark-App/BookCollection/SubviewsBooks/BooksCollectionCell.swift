@@ -23,7 +23,7 @@ class BooksCollectionCell : UICollectionViewCell{
         let bookTitle = UILabel()
         bookTitle.textColor = .black
         bookTitle.text = "titulo de libro"
-        bookTitle.backgroundColor = .magenta
+        bookTitle.backgroundColor = .clear// se puso clear porque no quiero que se vea
         bookTitle.font = .boldSystemFont(ofSize: 10)
         return bookTitle
     }()

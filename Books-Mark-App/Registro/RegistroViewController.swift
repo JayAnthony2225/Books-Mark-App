@@ -64,14 +64,14 @@ class RegistroViewController: UIViewController
         view.addSubview(backButton!)
         
         backText = UILabel(frame: CGRect(x: 37, y: 30, width: 100, height: 50))
-        backText?.text = "Regresar"
+        backText?.text = "Back"
         backText?.textColor = .white
         backText?.font = UIFont(name: "Helvetica Bold", size: 20)
         view.addSubview(backText!)
         
         pasosLabel =  UILabel(frame: CGRect(x: 20, y: 95, width: 330, height: 40))
         pasosLabel?.backgroundColor = .clear
-        pasosLabel?.text = "Estas a unos cuantos pasos de vivir la mejor experiencia"
+        pasosLabel?.text = "You are a few steps away from living the best experience"
         pasosLabel?.numberOfLines = 0
         pasosLabel?.adjustsFontSizeToFitWidth = true
         pasosLabel?.font = UIFont(name: "Arial Bold", size: 14)
@@ -81,7 +81,7 @@ class RegistroViewController: UIViewController
         crearCuenta = UIButton(frame: CGRect(x: 60, y: 715, width: width - 120, height: 40))
         crearCuenta?.backgroundColor = darkBlueTextColor
         crearCuenta?.layer.cornerRadius = 15
-        crearCuenta?.setTitle("CREAR CUENTA", for: .normal)
+        crearCuenta?.setTitle("Sign up", for: .normal)
         crearCuenta?.layer.borderColor = UIColor.white.cgColor
         crearCuenta?.layer.borderWidth = 1
         crearCuenta?.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
@@ -104,8 +104,8 @@ class RegistroViewController: UIViewController
         
         registraInfo =  UILabel(frame: CGRect(x: 50, y: 15 , width: width, height: 40))
         registraInfo?.backgroundColor = .clear
-        registraInfo?.text = "Registra tu información"
-        registraInfo?.font = UIFont(name: "Helvetica Bold", size: 22)
+        registraInfo?.text = "Register your information"
+        registraInfo?.font = UIFont(name: "Helvetica Bold", size: 20)
         registraInfo?.textColor = blueTextColor
         registroView?.addSubview(registraInfo!)
         
@@ -163,7 +163,7 @@ class RegistroViewController: UIViewController
         usuarioLabel?.font = UIFont(name: "Arial Bold", size: 15)
         usuarioLabel?.layer.cornerRadius = 2
         usuarioLabel?.layer.borderWidth = 0
-        usuarioLabel?.text = " Usuario "
+        usuarioLabel?.text = " User "
         registroView?.addSubview(usuarioLabel!)
         
         correoLabel = UILabel(frame: CGRect(x: 30, y: 161, width: width/2 , height: 15))
@@ -173,7 +173,7 @@ class RegistroViewController: UIViewController
         correoLabel?.font = UIFont(name: "Arial Bold", size: 15)
         correoLabel?.layer.cornerRadius = 2
         correoLabel?.layer.borderWidth = 0
-        correoLabel?.text = " Correo"
+        correoLabel?.text = " E-mail"
         registroView?.addSubview(correoLabel!)
         
         pswLabel = UILabel(frame: CGRect(x: 30, y: 239, width: width/2 , height: 15))
@@ -183,7 +183,7 @@ class RegistroViewController: UIViewController
         pswLabel?.font = UIFont(name: "Arial Bold", size: 15)
         pswLabel?.layer.cornerRadius = 2
         pswLabel?.layer.borderWidth = 0
-        pswLabel?.text = " Contraseña "
+        pswLabel?.text = " Password "
         registroView?.addSubview(pswLabel!)
         
         pswLabel2 = UILabel(frame: CGRect(x: 30, y: 318, width: width/2 , height: 15))
@@ -193,13 +193,16 @@ class RegistroViewController: UIViewController
         pswLabel2?.font = UIFont(name: "Arial Bold", size: 15)
         pswLabel2?.layer.cornerRadius = 2
         pswLabel2?.layer.borderWidth = 0
-        pswLabel2?.text = " Confirmar contraseña "
+        pswLabel2?.text = " Confirm Password "
         registroView?.addSubview(pswLabel2!)
         
 //pswLabel
         //usuarioLabel
-        
     }
+    
+    // funcion para quitar el teclado al finalizar la escritura
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true) }
     
     @objc func backAction()
     {
@@ -218,6 +221,13 @@ class RegistroViewController: UIViewController
        var pswCheck = ""
        var pswCheckVar = ""
        var alertText = ""
+       
+       crearCuenta?.backgroundColor = blueTextColor
+       crearCuenta?.alpha = 0.5
+       DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+           self.crearCuenta?.alpha = 1.0
+           self.crearCuenta?.backgroundColor = self.darkBlueTextColor
+       }
        
        if usuarioText?.text != ""{
            usuario = usuarioText?.text ?? ""

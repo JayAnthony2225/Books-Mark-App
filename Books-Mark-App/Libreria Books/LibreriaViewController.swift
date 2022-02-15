@@ -14,11 +14,20 @@ class LibreriaViewController : UIViewController {
     var holaLabel : UILabel?
     var nombreLabel : UILabel?
     var masPolular : UILabel?
+    var recomendados : UILabel?
     var collectionBook : UIImageView? //UICollectionView?
+    var collectionBook2 : UIImageView?
+    var findBook : UIImageView?
+    var findLabel : UILabel?
     var backgroundBook : UIImageView?
     var librosButton : UIButton?
     var categoriasButton :UIButton?
     var autoresButton : UIButton?
+    var buscarAutor : UIButton?
+    var buscarAutor1 : UIButton?
+    var buscarCategoria : UIButton?
+    var buscarLibrosXautor : UIButton?
+    
     
     var dataSource : BookObject?
     
@@ -60,27 +69,24 @@ class LibreriaViewController : UIViewController {
     
     func initUI(){
         
-        // INIT COLLECTION
+        getData()
         
+    //MARK: Init Libreria Collection View ____
         libreriaCollectionView.delegate = self
         libreriaCollectionView.dataSource = self
         view.addSubview(libreriaCollectionView)
-        //libreriaCollectionView.addAnchorsWithMargin(20)
-        libreriaCollectionView.addAnchorsAndSize(width: width , height: height / 4, left: 10, top: 150, right: 10, bottom: 350)
-        
-        
-    //INIT ELEMENTOS
-        
-        bookTableView = UITableView(frame: CGRect(x: 10, y: 400, width: width - 20, height: height/2))
+        //libreriaCollectionView.addAnchorsWithMargin(20)                   //4                    //150                200
+        libreriaCollectionView.addAnchorsAndSize(width: width , height: height / 7, left: 10, top: 170, right: 10, bottom: 50)
+    
+    //MARK: Init Elementos de vista         _____
+                                                        //400
+        bookTableView = UITableView(frame: CGRect(x: 10, y: 480, width: width - 20, height: height/2))
         bookTableView?.backgroundColor = darkBlueTextColor
         bookTableView?.delegate = self
         bookTableView?.dataSource = self
         view.addSubview(bookTableView!)
-        
-        getData()
-        
-                                                        //x 0 , y 0
-        backgroundBook = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/6))
+                                                        //x 0 , y 0                         // 8
+        backgroundBook = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/7))
         backgroundBook?.image = UIImage(named:"backImage1")
         backgroundBook?.layer.masksToBounds = true
         backgroundBook?.contentMode = .scaleAspectFill
@@ -90,19 +96,20 @@ class LibreriaViewController : UIViewController {
         
         holaLabel =  UILabel(frame: CGRect(x: 35, y: 30, width: width/4, height: height/8))
         holaLabel?.backgroundColor = .clear
-        holaLabel?.text = "Hola"
-        holaLabel?.font = UIFont(name: "Helvetica Bold", size: 26)
+        holaLabel?.text = "Hello"
+        holaLabel?.font = UIFont(name: "Helvetica Bold", size: 24)
         holaLabel?.textColor = lightBTextColor
         view.addSubview(holaLabel!)
         
         nombreLabel =  UILabel(frame: CGRect(x: 35, y: 50, width: width/4, height: height/8))
         nombreLabel?.backgroundColor = .clear
         nombreLabel?.text = "Marco!"
-        nombreLabel?.font = UIFont(name: "Helvetica Bold", size: 26)
+        nombreLabel?.font = UIFont(name: "Helvetica Bold", size: 24)
         nombreLabel?.textColor = darkBlueTextColor
         view.addSubview(nombreLabel!)
         
-        collectionBook = UIImageView (frame: CGRect(x: 0, y: 160, width: width, height: height/16))
+//MARK: Populares Label and View                                                        // 16
+        collectionBook = UIImageView (frame: CGRect(x: 10, y: 130, width: width - 20, height: height/22))
         collectionBook?.backgroundColor = .black
         collectionBook?.image = UIImage(named: "backImage2")//aqui le asigno la imagen segun sea el nombre en assets
         collectionBook?.contentMode = .scaleAspectFill // para hacer que encaje la imagen en el image box
@@ -110,18 +117,92 @@ class LibreriaViewController : UIViewController {
         collectionBook?.layer.cornerRadius = 10
         view.addSubview(collectionBook!)
         
-        masPolular =  UILabel(frame: CGRect(x: 45, y: 160, width: 200, height: 40))
+        masPolular =  UILabel(frame: CGRect(x: 30, y: 132, width: 200, height: 40))
         masPolular?.backgroundColor = .clear
-        masPolular?.text = "Más populares"
-        masPolular?.font = UIFont(name: "Helvetica Bold", size: 22)
+        masPolular?.text = "New & Trending:"
+        masPolular?.font = UIFont(name: "Helvetica Bold", size: 19)
         masPolular?.textColor = blueTextColor
         view.addSubview(masPolular!)
         
+        //MARK: Buscar por  Label and View                                                        // 16
+        findBook = UIImageView (frame: CGRect(x: 10, y: 360,  width: width - 20, height: height/22))
+        findBook?.backgroundColor = .black
+        findBook?.image = UIImage(named: "backImage1")//aqui le asigno la imagen segun sea el nombre en assets
+        findBook?.contentMode = .scaleAspectFill // para hacer que encaje la imagen en el image box
+        findBook?.layer.masksToBounds = true // esto es para los bordes y que se ajuste la imagen
+        findBook?.layer.cornerRadius = 10
+        view.addSubview(findBook!)
+                
+        findLabel =  UILabel(frame: CGRect(x: 35, y: 360, width: 200, height: 40))
+        findLabel?.backgroundColor = .clear
+        findLabel?.text = "Search:"
+        findLabel?.font = UIFont(name: "Helvetica Bold", size: 19)
+        findLabel?.textColor = blueTextColor
+        view.addSubview(findLabel!)
         
+ //MARK: Recomendados Label and Back Image                                                         // was 16
+        collectionBook2 = UIImageView (frame: CGRect(x: 10, y: 460, width: width - 20, height: height/22))
+        collectionBook2?.backgroundColor = .black
+        collectionBook2?.image = UIImage(named: "backImage2")//aqui le asigno la imagen segun sea el nombre en assets
+        collectionBook2?.contentMode = .scaleAspectFill // para hacer que encaje la imagen en el image box
+        collectionBook2?.layer.masksToBounds = true // esto es para los bordes y que se ajuste la imagen
+        collectionBook2?.layer.cornerRadius = 10
+        view.addSubview(collectionBook2!)
+            
+        recomendados =  UILabel(frame: CGRect(x: 35, y: 462, width: 200, height: 40))
+        recomendados?.backgroundColor = .clear
+        recomendados?.text = "Hack your life: "
+        recomendados?.font = UIFont(name: "Helvetica Bold", size: 19)
+        recomendados?.textColor = blueTextColor
+            view.addSubview(recomendados!)
+        
+        
+        //--------------- Boton LOG OUT ---------------
         backButton = UIButton(frame: CGRect(x: 330, y: 50, width: 35, height: 35))
         backButton?.setImage(UIImage(named: "logOut"), for: .normal)
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backButton!)
+        
+        
+        
+        //--------------- Boton Buscar Autor ---------------
+       // buscarAutor = UIButton(frame: CGRect(x: 10, y: 365, width: width - 20, height: 110))
+       // buscarAutor?.backgroundColor = darkBlueTextColor
+       // buscarAutor?.layer.cornerRadius = 15
+        //buscarAutor?.setTitle("Autor", for: .normal)
+       // buscarAutor?.layer.borderColor = UIColor.white.cgColor
+        //buscarAutor?.layer.borderWidth = 1
+       //buscarAutor?.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
+        //view.addSubview(buscarAutor!)
+        
+                buscarAutor1 = UIButton(frame: CGRect(x: 10, y: 415, width: width / 4, height: 30))
+                buscarAutor1?.backgroundColor = darkBlueTextColor
+                buscarAutor1?.layer.cornerRadius = 10
+                buscarAutor1?.setTitle("Authors", for: .normal)
+                buscarAutor1?.layer.borderColor = UIColor.white.cgColor
+                buscarAutor1?.layer.borderWidth = 1
+                buscarAutor1?.addTarget(self, action: #selector(autorFinder), for: .touchUpInside)
+                view.addSubview(buscarAutor1!)
+        
+                buscarCategoria = UIButton(frame: CGRect(x: 118, y: 415, width: width / 3, height: 30))
+                buscarCategoria?.backgroundColor = darkBlueTextColor
+                buscarCategoria?.layer.cornerRadius = 10
+                buscarCategoria?.setTitle("By Category", for: .normal)
+                buscarCategoria?.layer.borderColor = UIColor.white.cgColor
+                buscarCategoria?.layer.borderWidth = 1
+                buscarCategoria?.addTarget(self, action: #selector(categoryFinder), for: .touchUpInside)
+                view.addSubview(buscarCategoria!)
+        
+        
+                buscarLibrosXautor = UIButton(frame: CGRect(x: 255, y: 415, width: width / 3, height: 30))
+                buscarLibrosXautor?.backgroundColor = darkBlueTextColor
+                buscarLibrosXautor?.layer.cornerRadius = 10
+                buscarLibrosXautor?.setTitle("By Author ID", for: .normal)
+                buscarLibrosXautor?.layer.borderColor = UIColor.white.cgColor
+                buscarLibrosXautor?.layer.borderWidth = 1
+                buscarLibrosXautor?.addTarget(self, action: #selector(bookByAutor), for: .touchUpInside)
+                view.addSubview(buscarLibrosXautor!)
+      
         
     }
     
@@ -146,17 +227,73 @@ class LibreriaViewController : UIViewController {
         
         let historicobooks = Categoria(categoriaName: "Best Seller", librosInfo: [bodega, medico, comite])
 //MARK: Book Obj data Source --------------
-        let populares = BookObject(bookCategorias: [historicobooks, terrorBooks, dramaBooks], cateTitle: "Populares categoria title")
+        let populares = BookObject(bookCategorias: [dramaBooks, historicobooks, terrorBooks], cateTitle: "Populares categoria title")
         
         dataSource = populares
     
     }
     
-    
+        //MARK: Funcion para regresar del view
         @objc func backAction(){
         print("back action")
         dismiss(animated:true )}
+    
+    @objc func autorFinder(){
+        
+        //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
+        buscarAutor1?.backgroundColor = blueTextColor
+        buscarAutor1?.alpha = 0.5
+         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+             self.buscarAutor1?.alpha = 1.0
+             self.buscarAutor1?.backgroundColor = self.darkBlueTextColor
+         }
+        
+            print("presentando buscador de autor View")
+            let libreriaOption = AutorController()
+            libreriaOption.modalPresentationStyle = .popover
+            present(libreriaOption, animated: true,completion:
+                        {
+                        print("Presentando View de Autor finder") })}
 
+    @objc func bookByAutor(){
+        
+        //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
+        buscarAutor1?.backgroundColor = blueTextColor
+        buscarAutor1?.alpha = 0.5
+         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+             self.buscarAutor1?.alpha = 1.0
+             self.buscarAutor1?.backgroundColor = self.darkBlueTextColor
+         }
+        
+            print("presentando buscador de autor View")
+            let libreriaOption = obrasViewController()
+            libreriaOption.modalPresentationStyle = .popover
+            present(libreriaOption, animated: true,completion:
+                        {
+                        print("Presentando View de Autor finder") })}
+
+    
+    
+        //MARK: Ir a View de busqueda por categoria
+        @objc func categoryFinder(){
+            
+            //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
+                buscarCategoria?.backgroundColor = blueTextColor
+                buscarCategoria?.alpha = 0.5
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                 self.buscarCategoria?.alpha = 1.0
+                 self.buscarCategoria?.backgroundColor = self.darkBlueTextColor
+             }
+            
+                print("presentando otro View")
+                let libreriaOption = planetasViewController()
+                libreriaOption.modalPresentationStyle = .popover
+                present(libreriaOption, animated: true,completion:
+                            {
+                            print("Presentando View de Registro") })}
+
+    
+    
     
 }
 
@@ -175,6 +312,8 @@ extension LibreriaViewController : UITableViewDataSource{
     }
  }
 
+// Esta es una extension para el delegado de la libreria view controller
+
 extension LibreriaViewController : UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -185,8 +324,8 @@ extension LibreriaViewController : UITableViewDelegate{
     let etiqueta = UILabel(frame: CGRect(x: 120, y: 15, width: 200, height: 30))
         etiqueta.text = dataSource?.bookCategorias?[section].categoriaName ?? ""
         etiqueta.font = .boldSystemFont(ofSize: 20)
-        etiqueta.textColor = whiteTextColor
-        vista.addSubview(etiqueta)
+        etiqueta.textColor = .red//lo pondre limpio, no quiero que se vea// esta etiqueta es la que se muestra en el encabezado de los nombres de categorias best seller , just added o hight rated
+       // vista.addSubview(etiqueta)
         
         return vista
     }
@@ -195,9 +334,8 @@ extension LibreriaViewController : UITableViewDelegate{
         print("Estoy en la seccion \(indexPath.section) en la celda \(indexPath.row)")
         
         let book = dataSource?.bookCategorias?[indexPath.section].librosInfo?[indexPath.row]
-        // aqui jalo la informacion de detailViewController
-            
         
+        // aqui jalo la informacion de detailViewController
         let vistaBook = DetailBookViewController()
         vistaBook.libro = book
         
@@ -219,7 +357,7 @@ extension LibreriaViewController : UITableViewDelegate{
         }
         
         func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 2
+            return 3
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
