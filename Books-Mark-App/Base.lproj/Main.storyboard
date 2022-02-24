@@ -23,6 +23,14 @@
             </objects>
             <point key="canvasLocation" x="133" y="110"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="A6w-nr-1DS">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="HzI-1N-EI2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bXn-Hc-43P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1136" y="110"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

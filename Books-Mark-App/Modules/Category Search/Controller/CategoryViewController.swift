@@ -46,10 +46,8 @@ class planetasViewController: UIViewController, UITextFieldDelegate, BookManager
     //OL7294929A
     view.backgroundColor = darkBlueTextColor
     initUI()
-        
     bookManager.delegate = self
     SearchTextField.delegate = self
-
 
 }
     func initUI(){
@@ -68,15 +66,11 @@ class planetasViewController: UIViewController, UITextFieldDelegate, BookManager
         backImage?.layer.cornerRadius = 15
         view.addSubview(backImage!)
         
-        
         ingresaCat = UILabel(frame: CGRect(x: 5, y: 80, width: width - 20 , height: 40))
         ingresaCat?.textAlignment = NSTextAlignment.center
         ingresaCat?.backgroundColor = .clear
         ingresaCat?.textColor = .white
         ingresaCat?.font = UIFont(name: "Arial Bold", size: 22)
-        //bienvenidoLabel?.layer.cornerRadius = 10
-        //bienvenidoLabel?.layer.borderColor = UIColor.black.cgColor
-        //bienvenidoLabel?.layer.borderWidth = 3
         ingresaCat?.text = " Enter a Category :  "
         view.addSubview(ingresaCat!)
     
@@ -97,14 +91,7 @@ class planetasViewController: UIViewController, UITextFieldDelegate, BookManager
         topBackground?.layer.masksToBounds = true // esto es para los bordes y que se ajuste la imagen
         topBackground?.layer.cornerRadius = 10
         view.addSubview(topBackground!)
-                
-       // top5 =  UILabel(frame: CGRect(x: 20, y: 170, width: width - 40, height: 40))
-       // top5?.backgroundColor = .clear
-       // top5?.text = "Top 5:"
-       // top5?.font = UIFont(name: "Helvetica Bold", size: 25)
-       // top5?.textColor = blueTextColor
-        //view.addSubview(top5!)
-        
+
         date = UILabel(frame: CGRect(x: 30, y: 180, width: 250 , height: 40))
         date?.textAlignment = NSTextAlignment.left
         date?.backgroundColor = .clear
@@ -148,7 +135,6 @@ class planetasViewController: UIViewController, UITextFieldDelegate, BookManager
         title4?.font = UIFont(name: "Arial Bold", size: 16)
         title4?.text = ""
         view.addSubview(title4!)
-        
         
         title5 = UILabel(frame: CGRect(x: 30, y: 440, width: 200  , height: 60))
         title5?.textAlignment = NSTextAlignment.center
@@ -200,12 +186,10 @@ class planetasViewController: UIViewController, UITextFieldDelegate, BookManager
         title10?.text = ""
         view.addSubview(title10!)
         
-        
         image1 = UIImageView (frame: CGRect(x: 0, y: 190, width: width , height: height/2))
         //image1?.image = UIImage(named: "")
         image1?.contentMode = .scaleAspectFit
        // view.addSubview(image1!)
-        
         
         backButton = UIButton(frame: CGRect(x: 10, y: 45, width: 20, height: 20))
         backButton?.setImage(UIImage(named: "backButton"), for: .normal)
@@ -247,7 +231,6 @@ class planetasViewController: UIViewController, UITextFieldDelegate, BookManager
         SearchTextField.text = ""
     }
     
-    
     //actulizamos la informacion obtenida de nuestra Api
     func didUpdatePhotoDay(_ BooksManager: BooksCateManager,photoDay: BookCategoryModel) {
         
@@ -267,18 +250,7 @@ class planetasViewController: UIViewController, UITextFieldDelegate, BookManager
             
             self.backImage?.image = UIImage(named:"backImage4")
             self.topBackground?.image = UIImage(named: "backImage2")
-            
-            //self.image?.image = photoDay.url
-            //self.image1?.image = UIImage(named: photoDay.url)
-            
-    //        let url = URL(string: photoDay.url)
-    //          if let data = try? Data(contentsOf: url!) {
-     //             self.image1?.image = UIImage(data: data)!
-
-            
         }
     }
-    //}
-    
 }
 

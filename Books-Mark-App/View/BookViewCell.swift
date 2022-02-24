@@ -30,14 +30,10 @@ class bookTableViewCell : UITableViewCell{
     var lightBTextColor = UIColor(displayP3Red: 50/255, green: 130/255, blue: 184/255, alpha: 1)
     var whiteTextColor = UIColor(displayP3Red: 187/255, green: 225/255, blue: 250/255, alpha: 1)
    
-    
-    
-    
     init (book : Libro){
         super.init(style: .default, reuseIdentifier: nil)
         self.book1 = book
         self.backgroundColor = darkBlueTextColor
-        
         initUI()
     }
     
@@ -59,7 +55,6 @@ class bookTableViewCell : UITableViewCell{
         autor?.textColor = blueTextColor
         contenidoPropio?.addSubview(autor!)
 
-        
         categoria = UILabel (frame: CGRect(x: 125, y: 30, width: width/2, height: 70))
         categoria?.text = book1?.category//"categoria"//\(String(describing: product?.precio ?? 0.0))"
         categoria?.textColor = blueTextColor
@@ -72,7 +67,6 @@ class bookTableViewCell : UITableViewCell{
 //        libroImage?.layer.borderWidth = 1
 //        libroImage?.layer.masksToBounds = true
         contenidoPropio?.addSubview(libroImage!)
-        
         
         icon2 = UIImageView (frame: CGRect(x: 300, y: 57, width: 35, height: 35))
         icon2?.image = UIImage(named: "go")

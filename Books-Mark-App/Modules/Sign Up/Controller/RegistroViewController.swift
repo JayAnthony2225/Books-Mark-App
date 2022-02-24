@@ -4,11 +4,8 @@
 //
 //  Created by Marco Cruz Velázquez on 1/22/22.
 //
-
 import UIKit
-
-class RegistroViewController: UIViewController
-{
+class RegistroViewController: UIViewController{
     var backButton : UIButton?
     var backText : UILabel?
     var backgroundBook : UIImageView?
@@ -35,22 +32,13 @@ class RegistroViewController: UIViewController
     var lightBTextColor = UIColor(displayP3Red: 50/255, green: 130/255, blue: 184/255, alpha: 1)
     var whiteTextColor = UIColor(displayP3Red: 187/255, green: 225/255, blue: 250/255, alpha: 1)
    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkBlueTextColor
-        
         registraDescription()
         initUI()
-       
     }
-    
-    func initUI()
-    {
-        
-        
+    func initUI(){
         backgroundBook = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/6))
         backgroundBook?.image = UIImage(named:"backImage5")
         backgroundBook?.layer.masksToBounds = true
@@ -71,14 +59,14 @@ class RegistroViewController: UIViewController
         
         pasosLabel =  UILabel(frame: CGRect(x: 20, y: 95, width: 330, height: 40))
         pasosLabel?.backgroundColor = .clear
-        pasosLabel?.text = "You are a few steps away from living the best experience"
+        pasosLabel?.text = "You are a few steps away from living the best experience."
         pasosLabel?.numberOfLines = 0
         pasosLabel?.adjustsFontSizeToFitWidth = true
-        pasosLabel?.font = UIFont(name: "Arial Bold", size: 14)
+        pasosLabel?.font = UIFont(name: "Arial Bold", size: 16)
         pasosLabel?.textColor = .white
         view.addSubview(pasosLabel!)
         
-        crearCuenta = UIButton(frame: CGRect(x: 60, y: 715, width: width - 120, height: 40))
+        crearCuenta = UIButton(frame: CGRect(x: 60, y: 735, width: width - 120, height: 40))
         crearCuenta?.backgroundColor = darkBlueTextColor
         crearCuenta?.layer.cornerRadius = 15
         crearCuenta?.setTitle("Sign up", for: .normal)
@@ -86,11 +74,7 @@ class RegistroViewController: UIViewController
         crearCuenta?.layer.borderWidth = 1
         crearCuenta?.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
         view.addSubview(crearCuenta!)
-        
-        
-        
     }
-
     func registraDescription(){ //180
         registroView = UIView(frame: CGRect(x: 20, y: 180, width: width - 40, height: 450))
         registroView?.backgroundColor = .white
@@ -108,9 +92,7 @@ class RegistroViewController: UIViewController
         registraInfo?.font = UIFont(name: "Helvetica Bold", size: 20)
         registraInfo?.textColor = blueTextColor
         registroView?.addSubview(registraInfo!)
-        
   //MARK: TEXT FIELDS  --------
-      
         usuarioText = UITextField(frame: CGRect(x: 40, y: 280, width: width - 80, height: 40))
         usuarioText?.textAlignment = NSTextAlignment.center
         //correoText?.text = ""
@@ -121,7 +103,6 @@ class RegistroViewController: UIViewController
         usuarioText?.layer.borderWidth = 3
         //correoTextField?.keyboardType = .emailAddress
         view.addSubview(usuarioText!)
-        
         
         correoTextField = UITextField(frame: CGRect(x: 40, y: 360, width: width - 80, height: 40))
         correoTextField?.textAlignment = NSTextAlignment.center
@@ -153,9 +134,7 @@ class RegistroViewController: UIViewController
         confirmaPswTextField?.layer.borderWidth = 3
         //pswTextField?.keyboardType = .default
         view.addSubview(confirmaPswTextField!)
-        
         //MARK:  LABEL -------
-        
         usuarioLabel = UILabel(frame: CGRect(x: 30, y: 80, width: width/2 , height: 15))
         usuarioLabel?.textAlignment = NSTextAlignment.natural
         usuarioLabel?.backgroundColor = .clear
@@ -195,23 +174,17 @@ class RegistroViewController: UIViewController
         pswLabel2?.layer.borderWidth = 0
         pswLabel2?.text = " Confirm Password "
         registroView?.addSubview(pswLabel2!)
-        
-//pswLabel
-        //usuarioLabel
     }
-    
     // funcion para quitar el teclado al finalizar la escritura
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true) }
     
-    @objc func backAction()
-    {
+    @objc func backAction(){
         print("back action")
         dismiss(animated:true )
     }
 
    @objc func goToBooks(){
-       
        var usuarioVar = ""
        var usuario = ""
        var correo = ""
@@ -221,41 +194,34 @@ class RegistroViewController: UIViewController
        var pswCheck = ""
        var pswCheckVar = ""
        var alertText = ""
-       
+       // Esto es para cambiar de color el boton al ser precionado
        crearCuenta?.backgroundColor = blueTextColor
        crearCuenta?.alpha = 0.5
        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
            self.crearCuenta?.alpha = 1.0
            self.crearCuenta?.backgroundColor = self.darkBlueTextColor
        }
-       
        if usuarioText?.text != ""{
            usuario = usuarioText?.text ?? ""
            usuarioVar = String(usuario)
            print("usuario ok , es: \(usuarioVar))")
-           
            correo = correoTextField?.text ?? ""
            correoVar = String(correo)
            if isValidEmail(correoVar){
                print("correo ok es : \(correoVar)")
-               
                psw = pswTextField?.text ?? ""
                pswVar = String(psw)
-               
                pswCheck = confirmaPswTextField?.text ?? ""
                pswCheckVar = String(pswCheck)
-               
+            
                if pswVar == pswCheckVar && pswVar != "" && pswCheckVar != ""{
-                   
                    print("Psw OK!, Pase Ud. buen hombre, password: \(pswVar) ")
-                   
                    let libreriaOption = LibreriaViewController()
                    libreriaOption.modalPresentationStyle = .fullScreen
                    present(libreriaOption, animated: true,completion:
                         {
                         print("Presentando View de Registro")
                         })
-                   
                }else{
                    print("Error en el psw , no coinciden")
                    alertText = "Error en contraseña, verifique "
@@ -263,7 +229,6 @@ class RegistroViewController: UIViewController
                    alert.addAction(UIAlertAction(title: "Intentar de nuevo 😊", style: .default, handler: nil))
                    self.present(alert,animated: true,completion: nil)
                }
-               
            }else{
                print("Error en mail")
                alertText = "Error en email, ingrese nuevamente "
@@ -271,7 +236,6 @@ class RegistroViewController: UIViewController
                alert.addAction(UIAlertAction(title: "Intentar de nuevo 😊 ", style: .default, handler: nil))
                self.present(alert,animated: true,completion: nil)
            }
-           
        }else{
            print("Error en Usuario")
            alertText = "Ya empezamos mal? Ingrese un usuario"
@@ -279,18 +243,7 @@ class RegistroViewController: UIViewController
            alert.addAction(UIAlertAction(title: " Ok entendido. 😊 ", style: .default, handler: nil))
            self.present(alert,animated: true,completion: nil)
        }
-       
-     
-       
 }
-    
-    
-    
-    
-    
-    
-    
-    
      func isValidEmail(_ email: String) -> Bool
          {
          let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -298,9 +251,4 @@ class RegistroViewController: UIViewController
          let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
          return emailPred.evaluate(with: email)
          }
-     
-    
-    
-    
-    
 }

@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 class BooksCollectionCell : UICollectionViewCell{
     
     var imageProduct : UIImageView = {
@@ -34,13 +33,9 @@ class BooksCollectionCell : UICollectionViewCell{
        // let color = UIColor(displayP3Red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
         self.backgroundColor = .clear
         
-        
-        
         self.addSubview(imageProduct)
         imageProduct.addAnchors(left: 10, top: 10, right: 10, bottom: 30)
         
-        
-       
         self.addSubview(nameProduct)
         nameProduct.addAnchors(left: 10, top: 10, right: 10, bottom: 10, withAnchor: .top, relativeToView: imageProduct)
         

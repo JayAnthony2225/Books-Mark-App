@@ -48,7 +48,6 @@ class DetailBookViewController: UIViewController {
         createProductView()
         createDescription()
         autorDescription()
-    
         
         topImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/6))
         topImageView?.image = UIImage(named:"backImage1")
@@ -56,7 +55,6 @@ class DetailBookViewController: UIViewController {
         topImageView?.contentMode = .scaleAspectFill
         topImageView?.layer.cornerRadius = 15
         view.addSubview(topImageView!)
-        
         
         backButton = UIButton(frame: CGRect(x: 10, y: 45, width: 20, height: 20))
         backButton?.setImage(UIImage(named: "backButton"), for: .normal)
@@ -122,9 +120,6 @@ class DetailBookViewController: UIViewController {
         iconRated?.contentMode = .scaleAspectFill
         iconRated?.layer.cornerRadius = 5
         productContentView?.addSubview(iconRated!)
-        
-        
-        
         
     }
     
@@ -204,11 +199,8 @@ class DetailBookViewController: UIViewController {
         //libroImage?.layer.cornerRadius = 5
         //libroImage?.layer.masksToBounds = true // esto es para los bordes y que se ajuste la imagen
         autorView?.addSubview(autorFoto!)
-        
-        
     }
 
- 
     @objc func backAction(){
      print("Back")
      dismiss(animated: true)

@@ -4,11 +4,8 @@
 //
 //  Created by Marco Cruz Velázquez on 1/22/22.
 //
-
 import UIKit
-
 class LibreriaViewController : UIViewController {
-    
     var bookTableView : UITableView?
     var backButton : UIButton?
     var holaLabel : UILabel?
@@ -28,26 +25,16 @@ class LibreriaViewController : UIViewController {
     var buscarCategoria : UIButton?
     var buscarLibrosXautor : UIButton?
     
-    
     var dataSource : BookObject?
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
-    
-    var darkBlueTextColor = UIColor(displayP3Red: 27/255, green: 38/255, blue: 44/255, alpha: 1)
-    var blueTextColor = UIColor(displayP3Red: 15/255, green: 76/255, blue: 117/255, alpha: 1)
-    var lightBTextColor = UIColor(displayP3Red: 50/255, green: 130/255, blue: 184/255, alpha: 1)
-    var whiteTextColor = UIColor(displayP3Red: 187/255, green: 225/255, blue: 250/255, alpha: 1)
-    
   // NUEVA VARIABLE
-    
     var libreriaCollectionView : UICollectionView = {
-        
                             let bookLayout = UICollectionViewFlowLayout()
                             bookLayout.scrollDirection = .horizontal
                             bookLayout.minimumLineSpacing = 20
                             bookLayout.minimumInteritemSpacing = 20
-        
                             let collection = UICollectionView(frame: .zero, collectionViewLayout: bookLayout)
                             collection.register(BooksCollectionCell.self, forCellWithReuseIdentifier: "bookcell")
                             collection.isPagingEnabled = true
@@ -56,32 +43,24 @@ class LibreriaViewController : UIViewController {
                             collection.showsVerticalScrollIndicator = true
                             collection.showsHorizontalScrollIndicator = true
                             return collection
-        
     }()
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = darkBlueTextColor
+        view.backgroundColor = .nightBlue
         
         initUI()
     }
-    
     func initUI(){
-        
         getData()
-        
     //MARK: Init Libreria Collection View ____
         libreriaCollectionView.delegate = self
         libreriaCollectionView.dataSource = self
         view.addSubview(libreriaCollectionView)
         //libreriaCollectionView.addAnchorsWithMargin(20)                   //4                    //150                200
         libreriaCollectionView.addAnchorsAndSize(width: width , height: height / 7, left: 10, top: 170, right: 10, bottom: 50)
-    
-    //MARK: Init Elementos de vista         _____
-                                                        //400
+    //MARK: Init Elementos de vista         ____
         bookTableView = UITableView(frame: CGRect(x: 10, y: 480, width: width - 20, height: height/2))
-        bookTableView?.backgroundColor = darkBlueTextColor
+        bookTableView?.backgroundColor = .nightBlue
         bookTableView?.delegate = self
         bookTableView?.dataSource = self
         view.addSubview(bookTableView!)
@@ -93,19 +72,18 @@ class LibreriaViewController : UIViewController {
         backgroundBook?.layer.cornerRadius = 15
         view.addSubview(backgroundBook!)
         
-        
         holaLabel =  UILabel(frame: CGRect(x: 35, y: 30, width: width/4, height: height/8))
         holaLabel?.backgroundColor = .clear
         holaLabel?.text = "Hello"
         holaLabel?.font = UIFont(name: "Helvetica Bold", size: 24)
-        holaLabel?.textColor = lightBTextColor
+        holaLabel?.textColor = .seaBlue
         view.addSubview(holaLabel!)
         
         nombreLabel =  UILabel(frame: CGRect(x: 35, y: 50, width: width/4, height: height/8))
         nombreLabel?.backgroundColor = .clear
         nombreLabel?.text = "Marco!"
         nombreLabel?.font = UIFont(name: "Helvetica Bold", size: 24)
-        nombreLabel?.textColor = darkBlueTextColor
+        nombreLabel?.textColor = .nightBlue
         view.addSubview(nombreLabel!)
         
 //MARK: Populares Label and View                                                        // 16
@@ -121,11 +99,11 @@ class LibreriaViewController : UIViewController {
         masPolular?.backgroundColor = .clear
         masPolular?.text = "New & Trending:"
         masPolular?.font = UIFont(name: "Helvetica Bold", size: 19)
-        masPolular?.textColor = blueTextColor
+        masPolular?.textColor = .seaBlue
         view.addSubview(masPolular!)
         
         //MARK: Buscar por  Label and View                                                        // 16
-        findBook = UIImageView (frame: CGRect(x: 10, y: 360,  width: width - 20, height: height/22))
+        findBook = UIImageView (frame: CGRect(x: 10, y: 370,  width: width - 20, height: height/22))
         findBook?.backgroundColor = .black
         findBook?.image = UIImage(named: "backImage1")//aqui le asigno la imagen segun sea el nombre en assets
         findBook?.contentMode = .scaleAspectFill // para hacer que encaje la imagen en el image box
@@ -133,15 +111,15 @@ class LibreriaViewController : UIViewController {
         findBook?.layer.cornerRadius = 10
         view.addSubview(findBook!)
                 
-        findLabel =  UILabel(frame: CGRect(x: 35, y: 360, width: 200, height: 40))
+        findLabel =  UILabel(frame: CGRect(x: 35, y: 370, width: 200, height: 40))
         findLabel?.backgroundColor = .clear
         findLabel?.text = "Search:"
         findLabel?.font = UIFont(name: "Helvetica Bold", size: 19)
-        findLabel?.textColor = blueTextColor
+        findLabel?.textColor = .seaBlue
         view.addSubview(findLabel!)
         
  //MARK: Recomendados Label and Back Image                                                         // was 16
-        collectionBook2 = UIImageView (frame: CGRect(x: 10, y: 460, width: width - 20, height: height/22))
+        collectionBook2 = UIImageView (frame: CGRect(x: 10, y: 475, width: width - 20, height: height/22))
         collectionBook2?.backgroundColor = .black
         collectionBook2?.image = UIImage(named: "backImage2")//aqui le asigno la imagen segun sea el nombre en assets
         collectionBook2?.contentMode = .scaleAspectFill // para hacer que encaje la imagen en el image box
@@ -149,13 +127,12 @@ class LibreriaViewController : UIViewController {
         collectionBook2?.layer.cornerRadius = 10
         view.addSubview(collectionBook2!)
             
-        recomendados =  UILabel(frame: CGRect(x: 35, y: 462, width: 200, height: 40))
+        recomendados =  UILabel(frame: CGRect(x: 35, y: 477, width: 200, height: 40))
         recomendados?.backgroundColor = .clear
         recomendados?.text = "Hack your life: "
         recomendados?.font = UIFont(name: "Helvetica Bold", size: 19)
-        recomendados?.textColor = blueTextColor
+        recomendados?.textColor = .seaBlue
             view.addSubview(recomendados!)
-        
         
         //--------------- Boton LOG OUT ---------------
         backButton = UIButton(frame: CGRect(x: 330, y: 50, width: 35, height: 35))
@@ -163,91 +140,68 @@ class LibreriaViewController : UIViewController {
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backButton!)
         
+        //Search  Buttons
+        buscarAutor1 = UIButton(frame: CGRect(x: 10, y: 420, width: width / 4, height: 30))
+        buscarAutor1?.backgroundColor = .nightBlue
+        buscarAutor1?.layer.cornerRadius = 10
+        buscarAutor1?.setTitle("Authors", for: .normal)
+        buscarAutor1?.layer.borderColor = UIColor.white.cgColor
+        buscarAutor1?.layer.borderWidth = 1
+        buscarAutor1?.addTarget(self, action: #selector(autorFinder), for: .touchUpInside)
+        view.addSubview(buscarAutor1!)
         
+        buscarCategoria = UIButton(frame: CGRect(x: 118, y: 420, width: width / 3, height: 30))
+        buscarCategoria?.backgroundColor = .nightBlue
+        buscarCategoria?.layer.cornerRadius = 10
+        buscarCategoria?.setTitle("By Category", for: .normal)
+        buscarCategoria?.layer.borderColor = UIColor.white.cgColor
+        buscarCategoria?.layer.borderWidth = 1
+        buscarCategoria?.addTarget(self, action: #selector(categoryFinder), for: .touchUpInside)
+        view.addSubview(buscarCategoria!)
         
-        //--------------- Boton Buscar Autor ---------------
-       // buscarAutor = UIButton(frame: CGRect(x: 10, y: 365, width: width - 20, height: 110))
-       // buscarAutor?.backgroundColor = darkBlueTextColor
-       // buscarAutor?.layer.cornerRadius = 15
-        //buscarAutor?.setTitle("Autor", for: .normal)
-       // buscarAutor?.layer.borderColor = UIColor.white.cgColor
-        //buscarAutor?.layer.borderWidth = 1
-       //buscarAutor?.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
-        //view.addSubview(buscarAutor!)
-        
-                buscarAutor1 = UIButton(frame: CGRect(x: 10, y: 415, width: width / 4, height: 30))
-                buscarAutor1?.backgroundColor = darkBlueTextColor
-                buscarAutor1?.layer.cornerRadius = 10
-                buscarAutor1?.setTitle("Authors", for: .normal)
-                buscarAutor1?.layer.borderColor = UIColor.white.cgColor
-                buscarAutor1?.layer.borderWidth = 1
-                buscarAutor1?.addTarget(self, action: #selector(autorFinder), for: .touchUpInside)
-                view.addSubview(buscarAutor1!)
-        
-                buscarCategoria = UIButton(frame: CGRect(x: 118, y: 415, width: width / 3, height: 30))
-                buscarCategoria?.backgroundColor = darkBlueTextColor
-                buscarCategoria?.layer.cornerRadius = 10
-                buscarCategoria?.setTitle("By Category", for: .normal)
-                buscarCategoria?.layer.borderColor = UIColor.white.cgColor
-                buscarCategoria?.layer.borderWidth = 1
-                buscarCategoria?.addTarget(self, action: #selector(categoryFinder), for: .touchUpInside)
-                view.addSubview(buscarCategoria!)
-        
-        
-                buscarLibrosXautor = UIButton(frame: CGRect(x: 255, y: 415, width: width / 3, height: 30))
-                buscarLibrosXautor?.backgroundColor = darkBlueTextColor
-                buscarLibrosXautor?.layer.cornerRadius = 10
-                buscarLibrosXautor?.setTitle("By Author ID", for: .normal)
-                buscarLibrosXautor?.layer.borderColor = UIColor.white.cgColor
-                buscarLibrosXautor?.layer.borderWidth = 1
-                buscarLibrosXautor?.addTarget(self, action: #selector(bookByAutor), for: .touchUpInside)
-                view.addSubview(buscarLibrosXautor!)
-      
-        
+        buscarLibrosXautor = UIButton(frame: CGRect(x: 260, y: 420, width: width / 3, height: 30))
+        buscarLibrosXautor?.backgroundColor = .nightBlue
+        buscarLibrosXautor?.layer.cornerRadius = 10
+        buscarLibrosXautor?.setTitle("By Author ID", for: .normal)
+        buscarLibrosXautor?.layer.borderColor = UIColor.white.cgColor
+        buscarLibrosXautor?.layer.borderWidth = 1
+        buscarLibrosXautor?.addTarget(self, action: #selector(bookByAutor), for: .touchUpInside)
+        view.addSubview(buscarLibrosXautor!)
     }
-    
     func getData(){
 //MARK: Categoria Drama --------------
         let libroCohello = Libro(tituloLibro: "El alquimista", autor: "Paulo Coelho", category: "Drama", precio: 350.00, rate: "4estrellas", portadaImage: "alquimistaImage", descripcion: "libro recomendado para lecturas de autosuperacion", autorFoto: "coelhoFoto", autorInfo: "Es uno de los escritores y novelistas más leídos del mundo con más de 320 millones de libros vendidos.")
         let cienSoledad = Libro(tituloLibro: "Cien años de soledad", autor: "Garcia Marquez", category: "Drama", precio: 590.0, rate: "5estrellas", portadaImage: "cienImage", descripcion: "best seller de Gacia Marquez", autorFoto: "marquezFoto", autorInfo: "Reconocido principalmente por sus novelas y cuentos, muere el 17 de abril de 2014, Ciudad de México")
         let casaEspiritus = Libro(tituloLibro: "La casa de los espiritus", autor: "Isabel Allende", category: "Drama", precio: 370.0 , rate: "5estrellas", portadaImage: "espiritusImage", descripcion: "Unos de los titulos mas galardonados de Isabel ", autorFoto: "isabelFoto", autorInfo: "Escritora chilena con nacionalidad estadounidense, Premio Nacional de Literatura de su país en 2010.")
         let once = Libro(tituloLibro: "Once minutos", autor: "Paulo Coelho", category: "Drama", precio: 350.0, rate: "4estrellas", portadaImage: "onceImage", descripcion: "Relata la vida de Maria en una aldea remota de Brasil",autorFoto: "coelhoFoto", autorInfo: "Es uno de los escritores y novelistas más leídos del mundo con más de 320 millones de libros vendidos en más de 170 países, traducidos a 83 lenguas.")
+        let bodega = Libro(tituloLibro: "La Bodega", autor: "Noah Gordon", category: "Ficcion Historica", precio: 600.0, rate: "5estrellas", portadaImage: "bodegaImage", descripcion: "La carta de amor de Godon a España y su vides", autorFoto: "noahFoto", autorInfo: "Escritor estadounidense de novelas que se han convertido en superventas. Nacimiento: 11 de noviembre de 1926, Worcester, Massachusetts")
+        let medico = Libro(tituloLibro: "El Medico", autor: "Noah Gordon", category: "Ficcion Historica", precio: 750.0, rate: "5estrellas", portadaImage: "medicoImage", descripcion: "Dramatica historia de la formacion de un erudito Medico",autorFoto: "noahFoto", autorInfo: "Escritor estadounidense de novelas que se han convertido en superventas. Nacimiento: 11 de noviembre de 1926, Worcester, Massachusetts")
+        let comite = Libro(tituloLibro: "El comite de la muerte", autor: "Noah Gordon", category: "Ficcion Historica", precio: 500.0, rate: "nuevo", portadaImage: "comiteImage", descripcion: "Tres medicos compiten para ser el mejor",autorFoto: "noahFoto", autorInfo: "Escritor estadounidense de novelas que se han convertido en superventas. Nacimiento: 11 de noviembre de 1926, Worcester, Massachusetts")
        
-        let dramaBooks = Categoria(categoriaName: "High Rated", librosInfo: [libroCohello, cienSoledad, casaEspiritus, once])
+        let dramaBooks = Categoria(categoriaName: "High Rated", librosInfo: [medico, casaEspiritus, comite, bodega, libroCohello, cienSoledad, once])
 //MARK: Categoria Terror --------------
         let baldor = Libro(tituloLibro: "Algebra de Baldor", autor: "Baldor", category: "Terror", precio: 700.0, rate: "nuevo", portadaImage: "baldorImage", descripcion: "libro para aprender algebra", autorFoto: "baldorFoto", autorInfo: "Aurelio Baldor fue Matemático, profesor, escritor y abogado cubano, autor del libro Álgebra de Baldor, ​ publicado en 1941")
         let control = Libro(tituloLibro: "Ing. control Moderno", autor: "K. Ogata", category: "Terror", precio: 300.0, rate: "nuevo", portadaImage: "ogataImage", descripcion: "Introduccion a los sistemas de control", autorFoto: "ogataFoto", autorInfo: "Katsuhiko Ogata es un profesor de ingeniería que nació en Tokio, Japón; el 6 de enero de 1925.")
         
         let terrorBooks = Categoria(categoriaName: "Just added", librosInfo: [baldor, control])
-        
-//MARK: Categoria Historica Ficcion --------------
-        let bodega = Libro(tituloLibro: "La Bodega", autor: "Noah Gordon", category: "Ficcion Historica", precio: 600.0, rate: "5estrellas", portadaImage: "bodegaImage", descripcion: "La carta de amor de Godon a España y su vides", autorFoto: "noahFoto", autorInfo: "Escritor estadounidense de novelas que se han convertido en superventas. Nacimiento: 11 de noviembre de 1926, Worcester, Massachusetts")
-        let medico = Libro(tituloLibro: "El Medico", autor: "Noah Gordon", category: "Ficcion Historica", precio: 750.0, rate: "5estrellas", portadaImage: "medicoImage", descripcion: "Dramatica historia de la formacion de un erudito Medico",autorFoto: "noahFoto", autorInfo: "Escritor estadounidense de novelas que se han convertido en superventas. Nacimiento: 11 de noviembre de 1926, Worcester, Massachusetts")
-        let comite = Libro(tituloLibro: "El comite de la muerte", autor: "Noah Gordon", category: "Ficcion Historica", precio: 500.0, rate: "nuevo", portadaImage: "comiteImage", descripcion: "Tres medicos compiten para ser el mejor",autorFoto: "noahFoto", autorInfo: "Escritor estadounidense de novelas que se han convertido en superventas. Nacimiento: 11 de noviembre de 1926, Worcester, Massachusetts")
-        
-        let historicobooks = Categoria(categoriaName: "Best Seller", librosInfo: [bodega, medico, comite])
 //MARK: Book Obj data Source --------------
-        let populares = BookObject(bookCategorias: [dramaBooks, historicobooks, terrorBooks], cateTitle: "Populares categoria title")
+        let populares = BookObject(bookCategorias: [dramaBooks, terrorBooks], cateTitle: "Populares categoria title")
         
         dataSource = populares
-    
     }
-    
-        //MARK: Funcion para regresar del view
+//MARK: Funcion para regresar del view
         @objc func backAction(){
         print("back action")
         dismiss(animated:true )}
     
     @objc func autorFinder(){
-        
         //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
-        buscarAutor1?.backgroundColor = blueTextColor
+        buscarAutor1?.backgroundColor = .seaBlue
         buscarAutor1?.alpha = 0.5
          DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
              self.buscarAutor1?.alpha = 1.0
-             self.buscarAutor1?.backgroundColor = self.darkBlueTextColor
+             self.buscarAutor1?.backgroundColor = .nightBlue
          }
-        
             print("presentando buscador de autor View")
             let libreriaOption = AutorController()
             libreriaOption.modalPresentationStyle = .popover
@@ -256,52 +210,39 @@ class LibreriaViewController : UIViewController {
                         print("Presentando View de Autor finder") })}
 
     @objc func bookByAutor(){
-        
         //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
-        buscarAutor1?.backgroundColor = blueTextColor
+        buscarAutor1?.backgroundColor = .seaBlue
         buscarAutor1?.alpha = 0.5
          DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
              self.buscarAutor1?.alpha = 1.0
-             self.buscarAutor1?.backgroundColor = self.darkBlueTextColor
+             self.buscarAutor1?.backgroundColor = .nightBlue
          }
-        
             print("presentando buscador de autor View")
             let libreriaOption = obrasViewController()
             libreriaOption.modalPresentationStyle = .popover
             present(libreriaOption, animated: true,completion:
                         {
                         print("Presentando View de Autor finder") })}
-
-    
-    
         //MARK: Ir a View de busqueda por categoria
         @objc func categoryFinder(){
-            
             //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
-                buscarCategoria?.backgroundColor = blueTextColor
+            buscarCategoria?.backgroundColor = .seaBlue
                 buscarCategoria?.alpha = 0.5
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                  self.buscarCategoria?.alpha = 1.0
-                 self.buscarCategoria?.backgroundColor = self.darkBlueTextColor
+                    self.buscarCategoria?.backgroundColor = .nightBlue
              }
-            
                 print("presentando otro View")
                 let libreriaOption = planetasViewController()
                 libreriaOption.modalPresentationStyle = .popover
                 present(libreriaOption, animated: true,completion:
                             {
                             print("Presentando View de Registro") })}
-
-    
-    
-    
 }
-
 extension LibreriaViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.bookCategorias?[section].librosInfo?.count ?? 0
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let libroCell = dataSource?.bookCategorias?[indexPath.section].librosInfo?[indexPath.row]
         let bookCell = bookTableViewCell(book: libroCell!)
@@ -311,22 +252,18 @@ extension LibreriaViewController : UITableViewDataSource{
         return height / 6
     }
  }
-
 // Esta es una extension para el delegado de la libreria view controller
-
 extension LibreriaViewController : UITableViewDelegate{
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
     let vista = UIView()
-    vista.backgroundColor = darkBlueTextColor
+        vista.backgroundColor = .nightBlue
     
     let etiqueta = UILabel(frame: CGRect(x: 120, y: 15, width: 200, height: 30))
         etiqueta.text = dataSource?.bookCategorias?[section].categoriaName ?? ""
         etiqueta.font = .boldSystemFont(ofSize: 20)
         etiqueta.textColor = .red//lo pondre limpio, no quiero que se vea// esta etiqueta es la que se muestra en el encabezado de los nombres de categorias best seller , just added o hight rated
        // vista.addSubview(etiqueta)
-        
         return vista
     }
     //--------
@@ -334,44 +271,32 @@ extension LibreriaViewController : UITableViewDelegate{
         print("Estoy en la seccion \(indexPath.section) en la celda \(indexPath.row)")
         
         let book = dataSource?.bookCategorias?[indexPath.section].librosInfo?[indexPath.row]
-        
         // aqui jalo la informacion de detailViewController
         let vistaBook = DetailBookViewController()
         vistaBook.libro = book
-        
         vistaBook.modalPresentationStyle = .fullScreen
         present(vistaBook, animated: true, completion: nil)
     }
-    
     ///Numero de secciones que vamos a usar
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource?.bookCategorias?.count ?? 0
     }
-    
 }
-    
     extension LibreriaViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-        
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return dataSource?.bookCategorias?[section].librosInfo?.count ?? 0
         }
-        
         func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 3
+            return 2
         }
-        
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let bookCell = libreriaCollectionView.dequeueReusableCell(withReuseIdentifier: "bookcell", for: indexPath) as! BooksCollectionCell
-            
             let libro = dataSource?.bookCategorias?[indexPath.section].librosInfo?[indexPath.item]
-            
            bookCell.setData(libro: libro!)
             return bookCell
         }
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
             return CGSize(width: width / 2 - 40, height: height / 4)
-          
         }
 
     }

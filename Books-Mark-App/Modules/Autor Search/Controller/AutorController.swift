@@ -51,7 +51,6 @@ class AutorController: UIViewController, UITextFieldDelegate, BookManagerDelegat
         
     view.backgroundColor = darkBlueTextColor
     initUI()
-        
     bookManager2.delegate = self
     SearchTextField.delegate = self
 
@@ -151,7 +150,6 @@ class AutorController: UIViewController, UITextFieldDelegate, BookManagerDelegat
         title4?.text = ""
         view.addSubview(title4!)
         
-
         title5 = UILabel(frame: CGRect(x: 30, y: 635, width: 350  , height: 60))
         title5?.textAlignment = NSTextAlignment.left
         title5?.backgroundColor = .clear
@@ -213,9 +211,6 @@ class AutorController: UIViewController, UITextFieldDelegate, BookManagerDelegat
         }
         SearchTextField.text = ""}
     
-    
-    
-    
     //actulizamos la informacion obtenida de nuestra Api
     func didUpdatePhotoDay2(_ BooksManager: BooksCateManager2,photoDay: BookCategoryModel2) {
         
@@ -233,11 +228,7 @@ class AutorController: UIViewController, UITextFieldDelegate, BookManagerDelegat
             self.topBackground?.image = UIImage(named: "backImage2")
                        
           //  self.view.addSubview(self.SearchTextField2!)
-            
-            
         }
     }
-    
-    
 }
 

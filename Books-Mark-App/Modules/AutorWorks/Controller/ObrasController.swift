@@ -10,7 +10,6 @@ import UIKit
 
 class obrasViewController: UIViewController, UITextFieldDelegate, BookManagerDelegate3 {
     
-    
     var hola : UILabel?
     
     var width = UIScreen.main.bounds.width
@@ -30,30 +29,25 @@ class obrasViewController: UIViewController, UITextFieldDelegate, BookManagerDel
     var title9 : UILabel?
     var title10 : UILabel?
     
-    
     var bookManager = BooksCateManager3()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
-    
+ 
     view.backgroundColor = .black
     initUI()
-        
     bookManager.delegate = self
     SearchTextField.delegate = self
-
 
 }
     func initUI(){
         
-        topImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/6))
-        topImageView?.image = UIImage(named:"backImage6")
-        topImageView?.layer.masksToBounds = true
-        topImageView?.contentMode = .scaleAspectFill
-        topImageView?.layer.cornerRadius = 15
-        view.addSubview(topImageView!)
+    topImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/6))
+    topImageView?.image = UIImage(named:"backImage6")
+    topImageView?.layer.masksToBounds = true
+    topImageView?.contentMode = .scaleAspectFill
+    topImageView?.layer.cornerRadius = 15
+    view.addSubview(topImageView!)
         
     hola = UILabel(frame: CGRect(x: 10, y: 90, width: width , height: 40))
     hola?.textAlignment = NSTextAlignment.center
@@ -119,8 +113,6 @@ class obrasViewController: UIViewController, UITextFieldDelegate, BookManagerDel
         title4?.text = ""
        view.addSubview(title4!)
         
-    
-        
         title5 = UILabel(frame: CGRect(x: 40, y: 400, width: width - 80 , height: 60))
         title5?.textAlignment = NSTextAlignment.center
         title5?.backgroundColor = .clear
@@ -171,7 +163,6 @@ class obrasViewController: UIViewController, UITextFieldDelegate, BookManagerDel
         title10?.text = ""
         view.addSubview(title10!)
         
-        
         image1 = UIImageView (frame: CGRect(x: 0, y: 190, width: width , height: height/2))
         //image1?.image = UIImage(named: "")
         image1?.contentMode = .scaleAspectFit
@@ -180,7 +171,6 @@ class obrasViewController: UIViewController, UITextFieldDelegate, BookManagerDel
     // funcion para quitar el teclado al finalizar la escritura
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true) }
-    
     
     @IBAction func SearchPressed(_ sender: UIButton) {
         SearchTextField.endEditing(true)
@@ -200,14 +190,11 @@ class obrasViewController: UIViewController, UITextFieldDelegate, BookManagerDel
         SearchTextField.text = ""
     }
     
-    
     //actulizamos la informacion obtenida de nuestra Api
     func didUpdatePhotoDay(_ BooksManager: BooksCateManager3,photoDay: BookCategoryModel3) {
         
         DispatchQueue.main.async {
-            
-             //   self.date?.text = photoDay.size
-                //self.title1?.text = photoDay.personal_name
+
             self.title1?.text = photoDay.textTitle
             self.title2?.text = photoDay.textTitle2
             self.title3?.text = photoDay.textTitle3
@@ -218,23 +205,7 @@ class obrasViewController: UIViewController, UITextFieldDelegate, BookManagerDel
             self.title8?.text = photoDay.textTitle8
             self.title9?.text = photoDay.textTitle9
             self.title10?.text = photoDay.textTitle10
-            //self.title2?.text = photoDay.textBirth_date
-            //self.title3?.text = photoDay.textKey
-           // self.title4?.text = photoDay.textBio
-            
-            
-            
-            //self.image?.image = photoDay.url
-            //self.image1?.image = UIImage(named: photoDay.url)
-            
-    //        let url = URL(string: photoDay.url)
-    //          if let data = try? Data(contentsOf: url!) {
-     //             self.image1?.image = UIImage(data: data)!
-
-            
         }
     }
-    //}
-    
 }
 
