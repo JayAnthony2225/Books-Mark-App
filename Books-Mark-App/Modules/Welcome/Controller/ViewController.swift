@@ -158,7 +158,20 @@ class ViewController: UIViewController{
                 let VC2 = secondViewController()
                 let VC3 = thirdViewController()
                     
+                    libreriaOption.title = "Home"
+                    VC2.title = "Search"
+                    VC3.title = "User"
+                    
                 tabBarViewController.setViewControllers([libreriaOption, VC2, VC3], animated: true)
+                    
+                    guard let items = tabBarViewController.tabBar.items else {
+                        return
+                    }
+                    let images = ["house", "star", "person.circle"]
+                    for x in 0..<items.count {
+                        items[0].badgeValue = "10"
+                        items[x].image = UIImage(systemName: images[x])
+                    }
                  
                     tabBarViewController.modalPresentationStyle = .fullScreen
                     present(tabBarViewController, animated: true)
