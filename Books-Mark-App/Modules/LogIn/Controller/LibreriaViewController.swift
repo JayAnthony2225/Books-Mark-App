@@ -9,10 +9,11 @@ class LibreriaViewController : UIViewController {
     var bookTableView : UITableView?
     var backButton : UIButton?
     var holaLabel : UILabel?
+    var logOut: UILabel?
     var nombreLabel : UILabel?
     var masPolular : UILabel?
     var recomendados : UILabel?
-    var collectionBook : UIImageView? //UICollectionView?
+    var collectionBook : UIImageView?
     var collectionBook2 : UIImageView?
     var findBook : UIImageView?
     var findLabel : UILabel?
@@ -85,6 +86,13 @@ class LibreriaViewController : UIViewController {
         nombreLabel?.font = UIFont(name: "Helvetica Bold", size: 24)
         nombreLabel?.textColor = .nightBlue
         view.addSubview(nombreLabel!)
+        
+        logOut =  UILabel(frame: CGRect(x: 330, y: 35, width: width/4, height: height/8))
+        logOut?.backgroundColor = .clear
+        logOut?.text = "Log Out"
+        logOut?.font = UIFont(name: "Helvetica Bold", size: 14)
+        logOut?.textColor = .nightBlue
+        view.addSubview(logOut!)
         
 //MARK: Populares Label and View                                                        // 16
         collectionBook = UIImageView (frame: CGRect(x: 10, y: 130, width: width - 20, height: height/22))
