@@ -83,7 +83,6 @@ class ViewController: UIViewController{
         //--------------- Correo TXT FIELD---------------    605
         correoTextField = UITextField(frame: CGRect(x: 30, y: 305, width: width - 60, height: 40))
         correoTextField?.textAlignment = NSTextAlignment.center
-        //correoTextField?.text = ""
         correoTextField?.placeholder = "example@mail.com   "
         correoTextField?.backgroundColor = .white
         correoTextField?.layer.cornerRadius = 5
@@ -106,7 +105,6 @@ class ViewController: UIViewController{
         view.addSubview(pswLabel!)
         //--------------- Password ---------------         670
         pswTextField = UITextField(frame: CGRect(x: 30, y: 370, width: width - 60, height: 40))
-        //pswTextField?.text = ""
         pswTextField?.placeholder = "*************** "
         pswTextField?.isSecureTextEntry = true
         pswTextField?.textAlignment = NSTextAlignment.center
@@ -153,21 +151,29 @@ class ViewController: UIViewController{
                     
     //este codigo es para tener un acceso rapido para probar sin logear a cada rato
                print("Ingresando a libreria View")
+                    
+               let tabBarViewController = UITabBarController()  // Codigo para TAB BAR
+                    
                 let libreriaOption = LibreriaViewController()
-               libreriaOption.modalPresentationStyle = .fullScreen
-               present(libreriaOption, animated: true,completion:
-                    {
-                   print("Presentando View de libreria")
-                   })
+                let VC2 = secondViewController()
+                let VC3 = thirdViewController()
+                    
+                tabBarViewController.setViewControllers([libreriaOption, VC2, VC3], animated: true)
+                 
+                    tabBarViewController.modalPresentationStyle = .fullScreen
+                    present(tabBarViewController, animated: true)
+                    //libreriaOption.modalPresentationStyle = .fullScreen
+                    //present(libreriaOption, animated: true,completion:
+                  //  {
+                   print("Presentando Tab bar y Views")
+                   //})
+                    
                     }
-               
-   
 /*
         var correoVar = ""
         var alertText = ""
         var passwordVar = " "
        // var correo = ""
-                
                 
                 if let correo = correoTextField?.text{
                 correoVar = String(correo)
@@ -210,11 +216,9 @@ class ViewController: UIViewController{
                     alert.addAction(UIAlertAction(title: "OK entendido. ", style: .default, handler: nil))
                     self.present(alert,animated: true,completion: nil)
                     }
-
-        }
+                }
  */
 
-    
 //MARK: Objeto- Funcion - Registro
         @objc func goToRegistro(){
            //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
@@ -224,7 +228,6 @@ class ViewController: UIViewController{
                 self.registrateButton?.alpha = 1.0
                 self.registrateButton?.backgroundColor = (.clear)
             }
-            
             print("Boton Registro presionado")
             let registroOption = RegistroViewController()
             registroOption.modalPresentationStyle = .fullScreen
@@ -232,11 +235,23 @@ class ViewController: UIViewController{
                         print("Presentando View de Registro")
                         })
         }
-
     func isValidEmail(_ email: String) -> Bool{
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
         }
+    
+    class secondViewController: UIViewController {
+        override func viewDidLoad() {
+            super.viewDidLoad()
+                view.backgroundColor = .red
+        }
+    }
+        class thirdViewController: UIViewController {
+            override func viewDidLoad() {
+                super.viewDidLoad()
+                    view.backgroundColor = .black
+            }
+        
+    }
 }
