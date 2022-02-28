@@ -167,7 +167,7 @@ class ViewController: UIViewController{
                     guard let items = tabBarViewController.tabBar.items else {
                         return
                     }
-                    let images = ["house", "star", "person.circle"]
+                    let images = ["house", "magnifyingglass", "person.circle"]
                     for x in 0..<items.count {
                         items[0].badgeValue = "10"
                         items[x].image = UIImage(systemName: images[x])

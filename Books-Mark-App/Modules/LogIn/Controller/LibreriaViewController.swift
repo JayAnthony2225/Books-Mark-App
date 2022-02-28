@@ -214,8 +214,8 @@ class LibreriaViewController : UIViewController {
             let libreriaOption = AutorController()
             libreriaOption.modalPresentationStyle = .popover
             present(libreriaOption, animated: true,completion:
-                        {
-                        print("Presentando View de Autor finder") })}
+            {
+            print("Presentando View de Autor finder") })}
 
     @objc func bookByAutor(){
         //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
@@ -229,24 +229,26 @@ class LibreriaViewController : UIViewController {
             let libreriaOption = obrasViewController()
             libreriaOption.modalPresentationStyle = .popover
             present(libreriaOption, animated: true,completion:
-                        {
-                        print("Presentando View de Autor finder") })}
-        //MARK: Ir a View de busqueda por categoria
-        @objc func categoryFinder(){
-            //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
-            buscarCategoria?.backgroundColor = .seaBlue
-                buscarCategoria?.alpha = 0.5
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                 self.buscarCategoria?.alpha = 1.0
-                    self.buscarCategoria?.backgroundColor = .nightBlue
-             }
+            {
+            print("Presentando View de Autor finder") })}
+    
+//MARK: Ir a View de busqueda por categoria
+    @objc func categoryFinder(){
+        //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
+        buscarCategoria?.backgroundColor = .seaBlue
+        buscarCategoria?.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        self.buscarCategoria?.alpha = 1.0
+        self.buscarCategoria?.backgroundColor = .nightBlue
+                }
                 print("presentando otro View")
                 let libreriaOption = planetasViewController()
                 libreriaOption.modalPresentationStyle = .popover
                 present(libreriaOption, animated: true,completion:
-                            {
-                            print("Presentando View de Registro") })}
+                {
+                print("Presentando View de Registro") })}
 }
+
 extension LibreriaViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.bookCategorias?[section].librosInfo?.count ?? 0
