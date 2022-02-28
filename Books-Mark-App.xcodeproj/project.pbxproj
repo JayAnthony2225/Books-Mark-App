@@ -10,6 +10,9 @@
 		D62A493627CCDB0F00DFD6FE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A493527CCDB0F00DFD6FE /* SearchViewController.swift */; };
 		D62A493927CCDC0100DFD6FE /* BooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A493827CCDC0100DFD6FE /* BooksResponse.swift */; };
 		D62A493B27CCDC5800DFD6FE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A493A27CCDC5800DFD6FE /* Constants.swift */; };
+		D62A493E27CCDDF500DFD6FE /* APIDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A493D27CCDDF500DFD6FE /* APIDataManager.swift */; };
+		D62A494027CCDE0D00DFD6FE /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A493F27CCDE0D00DFD6FE /* Parser.swift */; };
+		D62A494227CCDE2600DFD6FE /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A494127CCDE2600DFD6FE /* EndPoints.swift */; };
 		D6484F19279DF1FB003293F1 /* booksFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6484F18279DF1FB003293F1 /* booksFile.swift */; };
 		D6484F1B279E03FB003293F1 /* BookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6484F1A279E03FB003293F1 /* BookViewCell.swift */; };
 		D6484F1F279E13A8003293F1 /* DetailBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6484F1E279E13A8003293F1 /* DetailBookViewController.swift */; };
@@ -44,6 +47,9 @@
 		D62A493527CCDB0F00DFD6FE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D62A493827CCDC0100DFD6FE /* BooksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksResponse.swift; sourceTree = "<group>"; };
 		D62A493A27CCDC5800DFD6FE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D62A493D27CCDDF500DFD6FE /* APIDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataManager.swift; sourceTree = "<group>"; };
+		D62A493F27CCDE0D00DFD6FE /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		D62A494127CCDE2600DFD6FE /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		D6484F18279DF1FB003293F1 /* booksFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = booksFile.swift; sourceTree = "<group>"; };
 		D6484F1A279E03FB003293F1 /* BookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewCell.swift; sourceTree = "<group>"; };
 		D6484F1E279E13A8003293F1 /* DetailBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,16 @@
 			path = "Response Model";
 			sourceTree = "<group>";
 		};
+		D62A493C27CCDDBB00DFD6FE /* Networking API2 */ = {
+			isa = PBXGroup;
+			children = (
+				D62A493D27CCDDF500DFD6FE /* APIDataManager.swift */,
+				D62A493F27CCDE0D00DFD6FE /* Parser.swift */,
+				D62A494127CCDE2600DFD6FE /* EndPoints.swift */,
+			);
+			path = "Networking API2";
+			sourceTree = "<group>";
+		};
 		D6484F2C27A08959003293F1 /* Anchors */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				D62A493A27CCDC5800DFD6FE /* Constants.swift */,
+				D62A493C27CCDDBB00DFD6FE /* Networking API2 */,
 				D6484F18279DF1FB003293F1 /* booksFile.swift */,
 				D62A493727CCDBD700DFD6FE /* Response Model */,
 				D6A6395527C7F436002A819D /* Extensions */,
@@ -463,6 +480,7 @@
 			files = (
 				D692063227B0AE5A00C29022 /* AutorController.swift in Sources */,
 				D692063927B0C3A800C29022 /* AutorModel.swift in Sources */,
+				D62A494027CCDE0D00DFD6FE /* Parser.swift in Sources */,
 				D69EAA87279C96DC000070AF /* LibreriaViewController.swift in Sources */,
 				D692064727B1E46E00C29022 /* ObrasController.swift in Sources */,
 				D69EAA77279B63EE000070AF /* ViewController.swift in Sources */,
@@ -479,8 +497,10 @@
 				D692063727B0C39700C29022 /* AutorData.swift in Sources */,
 				D6484F2E27A089A0003293F1 /* Utils.swift in Sources */,
 				D692062A27AF5E4700C29022 /* BookModel.swift in Sources */,
+				D62A494227CCDE2600DFD6FE /* EndPoints.swift in Sources */,
 				D692062827AF5E0B00C29022 /* BookData.swift in Sources */,
 				D69EAA73279B63EE000070AF /* AppDelegate.swift in Sources */,
+				D62A493E27CCDDF500DFD6FE /* APIDataManager.swift in Sources */,
 				D6A638E827C650C8002A819D /* WelcomeViewModel.swift in Sources */,
 				D692062D27AF5F7E00C29022 /* CategoryViewController.swift in Sources */,
 				D62A493927CCDC0100DFD6FE /* BooksResponse.swift in Sources */,

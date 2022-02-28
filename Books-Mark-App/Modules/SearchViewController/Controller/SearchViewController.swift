@@ -18,13 +18,14 @@ class SearchViewController: UIViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
+           
             initUI()
             makeAPIRequest()
             // TODO: Complete UI
         }
         
         func initUI() {
-            view.backgroundColor = .systemBackground
+            view.backgroundColor = .nightBlue
             navigationItem.title = Constants.dashboardTitleString
         }
         
@@ -82,11 +83,11 @@ class SearchViewController: UIViewController {
         
     }
 
-    extension DashboardViewController: UITableViewDelegate {
+    extension SearchViewController: UITableViewDelegate {
         
     }
 
-    extension DashboardViewController: UITableViewDataSource {
+    extension SearchViewController: UITableViewDataSource {
         
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1

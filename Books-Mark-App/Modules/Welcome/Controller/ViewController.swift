@@ -155,14 +155,14 @@ class ViewController: UIViewController{
                let tabBarViewController = UITabBarController()  // Codigo para TAB BAR
                     
                 let libreriaOption = LibreriaViewController()
-                let VC2 = secondViewController()
+                let searchOption = SearchViewController()
                 let VC3 = thirdViewController()
                     
                     libreriaOption.title = "Home"
-                    VC2.title = "Search"
+                    searchOption.title = "Search"
                     VC3.title = "User"
                     
-                tabBarViewController.setViewControllers([libreriaOption, VC2, VC3], animated: true)
+                tabBarViewController.setViewControllers([libreriaOption, searchOption, VC3], animated: true)
                     
                     guard let items = tabBarViewController.tabBar.items else {
                         return
@@ -254,16 +254,17 @@ class ViewController: UIViewController{
         return emailPred.evaluate(with: email)
         }
     
-    class secondViewController: UIViewController {
+  /*  class secondViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
                 view.backgroundColor = .red
         }
     }
+   */
         class thirdViewController: UIViewController {
             override func viewDidLoad() {
                 super.viewDidLoad()
-                    view.backgroundColor = .black
+                    view.backgroundColor = .nightBlue
             }
         
     }
