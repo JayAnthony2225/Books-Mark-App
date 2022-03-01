@@ -6,6 +6,7 @@
 //
 import UIKit
 class LibreriaViewController : UIViewController {
+    
     var bookTableView : UITableView?
     var backButton : UIButton?
     var holaLabel : UILabel?
@@ -73,26 +74,20 @@ class LibreriaViewController : UIViewController {
         backgroundBook?.layer.cornerRadius = 15
         view.addSubview(backgroundBook!)
         
-        holaLabel =  UILabel(frame: CGRect(x: 35, y: 30, width: width/4, height: height/8))
+        holaLabel =  UILabel(frame: CGRect(x: 35, y: 20, width: width/4, height: height/8))
         holaLabel?.backgroundColor = .clear
         holaLabel?.text = "Hello"
         holaLabel?.font = UIFont(name: "Helvetica Bold", size: 24)
         holaLabel?.textColor = .seaBlue
         view.addSubview(holaLabel!)
         
-        nombreLabel =  UILabel(frame: CGRect(x: 35, y: 50, width: width/4, height: height/8))
+        nombreLabel =  UILabel(frame: CGRect(x: 35, y: 45, width: width/2, height: height/8))
         nombreLabel?.backgroundColor = .clear
-        nombreLabel?.text = "Marco!"
-        nombreLabel?.font = UIFont(name: "Helvetica Bold", size: 24)
+        nombreLabel?.text = UserDefaults.standard.string(forKey: "User") //"Marco!"
+        nombreLabel?.font = UIFont(name: "Helvetica Bold", size: 28)
         nombreLabel?.textColor = .nightBlue
         view.addSubview(nombreLabel!)
         
-        logOut =  UILabel(frame: CGRect(x: 330, y: 35, width: width/4, height: height/8))
-        logOut?.backgroundColor = .clear
-        logOut?.text = "Log Out"
-        logOut?.font = UIFont(name: "Helvetica Bold", size: 14)
-        logOut?.textColor = .nightBlue
-        view.addSubview(logOut!)
         
 //MARK: Populares Label and View                                                        // 16
         collectionBook = UIImageView (frame: CGRect(x: 10, y: 130, width: width - 20, height: height/22))
@@ -141,12 +136,6 @@ class LibreriaViewController : UIViewController {
         recomendados?.font = UIFont(name: "Helvetica Bold", size: 19)
         recomendados?.textColor = .seaBlue
             view.addSubview(recomendados!)
-        
-        //--------------- Boton LOG OUT ---------------
-        backButton = UIButton(frame: CGRect(x: 330, y: 50, width: 35, height: 35))
-        backButton?.setImage(UIImage(named: "logOut"), for: .normal)
-        backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        view.addSubview(backButton!)
         
         //Search  Buttons
         buscarAutor1 = UIButton(frame: CGRect(x: 10, y: 420, width: width / 4, height: 30))
@@ -284,7 +273,7 @@ extension LibreriaViewController : UITableViewDelegate{
         // aqui jalo la informacion de detailViewController
         let vistaBook = DetailBookViewController()
         vistaBook.libro = book
-        vistaBook.modalPresentationStyle = .fullScreen
+        vistaBook.modalPresentationStyle = .popover
         present(vistaBook, animated: true, completion: nil)
     }
     ///Numero de secciones que vamos a usar

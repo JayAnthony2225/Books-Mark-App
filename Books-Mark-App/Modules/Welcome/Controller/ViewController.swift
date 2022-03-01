@@ -19,6 +19,10 @@ class ViewController: UIViewController{
     var iniciarSesion : UIButton?
     var registrateButton : UIButton?
     var showButton : UIButton?
+    var userId : UILabel?
+    var userIdTextField : UITextField?
+   // var defaults = UserDefaults.standard
+    
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
@@ -59,8 +63,29 @@ class ViewController: UIViewController{
         bienvenidoLabel?.text = " ¡Welcome! "
         view.addSubview(bienvenidoLabel!)
         
+        //---------------Encabezado USER ID ------------585---
+        userId = UILabel(frame: CGRect(x: 35, y: 285 + 20, width: 150 , height: 15))
+        userId?.textAlignment = NSTextAlignment.left
+        userId?.backgroundColor = .clear
+        userId?.textColor = .nightBlue
+        userId?.font = UIFont(name: "Arial Bold", size: 15)
+        userId?.layer.cornerRadius = 2
+        userId?.layer.borderColor = UIColor.white.cgColor
+        userId?.layer.borderWidth = 0
+        userId?.text = "User ID"
+        view.addSubview(userId!)
+        
+        userIdTextField = UITextField(frame: CGRect(x: 30, y: 305 + 20, width: width - 60, height: 40))
+        userIdTextField?.textAlignment = NSTextAlignment.center
+        userIdTextField?.placeholder = "User ID   "
+        userIdTextField?.backgroundColor = .white
+        userIdTextField?.layer.cornerRadius = 5
+        userIdTextField?.layer.borderColor = UIColor.white.cgColor
+        userIdTextField?.layer.borderWidth = 3
+        view.addSubview(userIdTextField!)
+   /*
         //---------------Encabezado Correo ------------585---
-        correoLabel = UILabel(frame: CGRect(x: 35, y: 285, width: 50 , height: 15))
+        correoLabel = UILabel(frame: CGRect(x: 35, y: 285 + 20, width: 50 , height: 15))
         correoLabel?.textAlignment = NSTextAlignment.left
         correoLabel?.backgroundColor = .clear
         correoLabel?.textColor = .nightBlue
@@ -71,7 +96,7 @@ class ViewController: UIViewController{
         correoLabel?.text = "E-mail "
         view.addSubview(correoLabel!)
         //--------------- Correo TXT FIELD---------------    605
-        correoTextField = UITextField(frame: CGRect(x: 30, y: 305, width: width - 60, height: 40))
+        correoTextField = UITextField(frame: CGRect(x: 30, y: 305 + 20, width: width - 60, height: 40))
         correoTextField?.textAlignment = NSTextAlignment.center
         correoTextField?.placeholder = "example@mail.com   "
         correoTextField?.backgroundColor = .white
@@ -81,9 +106,9 @@ class ViewController: UIViewController{
        // correoTextField?.keyboardType = .emailAddress
        // correoTextField?.endEditing(true)  //endEditing(true)
         view.addSubview(correoTextField!)
-        
+   */
       //---------------Encabezado password ---------650------
-        pswLabel = UILabel(frame: CGRect(x: 35, y: 350, width: width/5 , height: 15))
+        pswLabel = UILabel(frame: CGRect(x: 35, y: 350 + 20, width: width/5 , height: 15))
         pswLabel?.textAlignment = NSTextAlignment.left
         pswLabel?.backgroundColor = .clear
         pswLabel?.textColor = .nightBlue
@@ -94,7 +119,7 @@ class ViewController: UIViewController{
         pswLabel?.text = "Password "
         view.addSubview(pswLabel!)
         //--------------- Password ---------------         670
-        pswTextField = UITextField(frame: CGRect(x: 30, y: 370, width: width - 60, height: 40))
+        pswTextField = UITextField(frame: CGRect(x: 30, y: 370 + 20, width: width - 60, height: 40))
         pswTextField?.placeholder = "*************** "
         pswTextField?.isSecureTextEntry = true
         pswTextField?.textAlignment = NSTextAlignment.center
@@ -105,7 +130,7 @@ class ViewController: UIViewController{
         //pswTextField?.keyboardType = .default
         view.addSubview(pswTextField!)
 
-        showButton = UIButton(frame: CGRect(x: 340, y: 375, width: 25, height: 25))
+        showButton = UIButton(frame: CGRect(x: 340, y: 375 + 20 , width: 25, height: 25))
         showButton?.setImage(UIImage(named: "showIcon"), for: .normal)
         showButton?.addTarget(self, action: #selector(showPsw), for: .touchUpInside)
         view.addSubview(showButton!)
@@ -153,6 +178,20 @@ class ViewController: UIViewController{
     //este codigo es para tener un acceso rapido para probar sin logear a cada rato
                print("Ingresando a libreria View")
  //MARK: TAB BAR Setting
+                    
+///----------- esta porcion de codigo es solo para hacer pruebas con el userDefaults
+                var userSet = ""
+                    if let user = userIdTextField?.text{
+                        if user != ""{
+                            userSet = user
+                            print(user)
+                           // defaults.set(user, forKey: "User") // Aqui guardamos el string user en Userdefaults
+                            UserDefaults.standard.set(userSet, forKey: "User")
+                        }
+                    //defaults.set(userSet, forKey: "User") // Aqui guardamos el string user en Userdefaults
+                       
+                    }
+////-------------- hasta aqui lo usare para hacer pruebas del user defaults
                let tabBarViewController = UITabBarController()  // Codigo para TAB BAR
                     
                 let libreriaOption = LibreriaViewController()
@@ -186,7 +225,10 @@ class ViewController: UIViewController{
         var alertText = ""
         var passwordVar = " "
        // var correo = ""
-                
+ 
+ NOTA: es importante saber que tome la descicion de eliminar el textFiel de correo , ya que
+ quiero usar el UserDefaults. stander para ser mostrado en logIn y prefiero que sea USER al Correo electronico , tambien por otra parte si yaexiste un usiario no veo porque debe ingresar su correo , lo delimite para que sea solo al hacer una nueva cuenta, entonces slo valida con ID y psw
+ 
                 if let correo = correoTextField?.text{
                 correoVar = String(correo)
                 if isValidEmail(correoVar) == true {
