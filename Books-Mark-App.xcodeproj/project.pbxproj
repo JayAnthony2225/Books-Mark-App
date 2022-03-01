@@ -13,6 +13,7 @@
 		D62A493E27CCDDF500DFD6FE /* APIDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A493D27CCDDF500DFD6FE /* APIDataManager.swift */; };
 		D62A494027CCDE0D00DFD6FE /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A493F27CCDE0D00DFD6FE /* Parser.swift */; };
 		D62A494227CCDE2600DFD6FE /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A494127CCDE2600DFD6FE /* EndPoints.swift */; };
+		D62A494527CCE54C00DFD6FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62A494427CCE54C00DFD6FE /* ProfileViewController.swift */; };
 		D6484F19279DF1FB003293F1 /* booksFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6484F18279DF1FB003293F1 /* booksFile.swift */; };
 		D6484F1B279E03FB003293F1 /* BookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6484F1A279E03FB003293F1 /* BookViewCell.swift */; };
 		D6484F1F279E13A8003293F1 /* DetailBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6484F1E279E13A8003293F1 /* DetailBookViewController.swift */; };
@@ -50,6 +51,7 @@
 		D62A493D27CCDDF500DFD6FE /* APIDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataManager.swift; sourceTree = "<group>"; };
 		D62A493F27CCDE0D00DFD6FE /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D62A494127CCDE2600DFD6FE /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		D62A494427CCE54C00DFD6FE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D6484F18279DF1FB003293F1 /* booksFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = booksFile.swift; sourceTree = "<group>"; };
 		D6484F1A279E03FB003293F1 /* BookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewCell.swift; sourceTree = "<group>"; };
 		D6484F1E279E13A8003293F1 /* DetailBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 				D62A494127CCDE2600DFD6FE /* EndPoints.swift */,
 			);
 			path = "Networking API2";
+			sourceTree = "<group>";
+		};
+		D62A494327CCE52700DFD6FE /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D62A494427CCE54C00DFD6FE /* ProfileViewController.swift */,
+			);
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 		D6484F2C27A08959003293F1 /* Anchors */ = {
@@ -217,6 +227,7 @@
 		D6A638D127C647A7002A819D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D62A494327CCE52700DFD6FE /* UserProfile */,
 				D6A638D527C648C1002A819D /* Welcome */,
 				D6A638D827C64914002A819D /* Sign Up */,
 				D6A638D227C647D9002A819D /* LogIn */,
@@ -484,6 +495,7 @@
 				D69EAA87279C96DC000070AF /* LibreriaViewController.swift in Sources */,
 				D692064727B1E46E00C29022 /* ObrasController.swift in Sources */,
 				D69EAA77279B63EE000070AF /* ViewController.swift in Sources */,
+				D62A494527CCE54C00DFD6FE /* ProfileViewController.swift in Sources */,
 				D692063027AF601600C29022 /* BookManager.swift in Sources */,
 				D6484F19279DF1FB003293F1 /* booksFile.swift in Sources */,
 				D692064127B1E41B00C29022 /* ObrasData.swift in Sources */,

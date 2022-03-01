@@ -18,6 +18,7 @@ class ViewController: UIViewController{
     var pswTextField : UITextField?
     var iniciarSesion : UIButton?
     var registrateButton : UIButton?
+    var showButton : UIButton?
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
@@ -45,17 +46,6 @@ class ViewController: UIViewController{
         backImage2?.contentMode = .scaleAspectFill
         backImage2?.layer.cornerRadius = 15
         view.addSubview(backImage2!)
-        
-        //--------------- be smarter Text ---------------
-        readText = UILabel(frame: CGRect(x: 190, y: 90, width: width/2, height: height/4))
-        readText?.textColor = .white
-        readText?.backgroundColor = .clear
-        readText?.text = "Less face \nmore book."
-        readText?.textAlignment = .left
-        readText?.font = UIFont(name: "Helvetica Bold", size: 32)
-        readText?.adjustsFontSizeToFitWidth = true
-        readText?.numberOfLines = 0
-        //view.addSubview(readText!)
         
         //--------------- Bienvenido Label---------------  //440
         bienvenidoLabel = UILabel(frame: CGRect(x: 70, y: 180, width: width - 150 , height: 40))
@@ -114,6 +104,12 @@ class ViewController: UIViewController{
         pswTextField?.layer.borderWidth = 3
         //pswTextField?.keyboardType = .default
         view.addSubview(pswTextField!)
+
+        showButton = UIButton(frame: CGRect(x: 340, y: 375, width: 25, height: 25))
+        showButton?.setImage(UIImage(named: "showIcon"), for: .normal)
+        showButton?.addTarget(self, action: #selector(showPsw), for: .touchUpInside)
+        view.addSubview(showButton!)
+        
         //--------------- Iniciar Sesion ---------------
         iniciarSesion = UIButton(frame: CGRect(x: 85, y: 730, width: width - 170, height: 40))
         iniciarSesion?.backgroundColor = .nightBlue
@@ -135,11 +131,16 @@ class ViewController: UIViewController{
         view.addSubview(registrateButton!)
     }
     
+    @objc func showPsw(){
+        pswTextField?.isSecureTextEntry.toggle()
+    }
+    
     // aqui intento hacer que mi teclado se esconda cuando termino de editar el texto
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true) }
     
-//MARK: Objeto- Funcion -  BOOKS
+//MARK:  Funcion -  Go to Books
+    
     @objc func goToBooks()
                 {
                     iniciarSesion?.backgroundColor = .seaBlue
@@ -151,28 +152,26 @@ class ViewController: UIViewController{
                     
     //este codigo es para tener un acceso rapido para probar sin logear a cada rato
                print("Ingresando a libreria View")
-                    
+ //MARK: TAB BAR Setting
                let tabBarViewController = UITabBarController()  // Codigo para TAB BAR
                     
                 let libreriaOption = LibreriaViewController()
                 let searchOption = SearchViewController()
-                let VC3 = thirdViewController()
+                let profileOption = ProfileViewController()
                     
                     libreriaOption.title = "Home"
                     searchOption.title = "Search"
-                    VC3.title = "User"
+                    profileOption.title = "User"
                     
-                tabBarViewController.setViewControllers([libreriaOption, searchOption, VC3], animated: true)
-                    
+                tabBarViewController.setViewControllers([libreriaOption, searchOption, profileOption], animated: true)
                     guard let items = tabBarViewController.tabBar.items else {
                         return
                     }
                     let images = ["house", "magnifyingglass", "person.circle"]
                     for x in 0..<items.count {
-                        items[0].badgeValue = "10"
+                        items[2].badgeValue = "3"
                         items[x].image = UIImage(systemName: images[x])
                     }
-                 
                     tabBarViewController.modalPresentationStyle = .fullScreen
                     present(tabBarViewController, animated: true)
                     //libreriaOption.modalPresentationStyle = .fullScreen
@@ -243,7 +242,7 @@ class ViewController: UIViewController{
             }
             print("Boton Registro presionado")
             let registroOption = RegistroViewController()
-            registroOption.modalPresentationStyle = .fullScreen
+            registroOption.modalPresentationStyle = .popover
             present(registroOption, animated: true,completion:{
                         print("Presentando View de Registro")
                         })
@@ -260,7 +259,7 @@ class ViewController: UIViewController{
                 view.backgroundColor = .red
         }
     }
-   */
+  
         class thirdViewController: UIViewController {
             override func viewDidLoad() {
                 super.viewDidLoad()
@@ -268,4 +267,5 @@ class ViewController: UIViewController{
             }
         
     }
+   */
 }

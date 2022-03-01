@@ -23,6 +23,8 @@ class RegistroViewController: UIViewController{
     var usuarioLabel : UILabel?
     var pswLabel : UILabel?
     var pswLabel2 : UILabel?
+    var showButton : UIButton?
+    var showButtonConfirm : UIButton?
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
@@ -124,6 +126,11 @@ class RegistroViewController: UIViewController{
         //pswTextField?.keyboardType = .default
         view.addSubview(pswTextField!)
         
+        showButton = UIButton(frame: CGRect(x: 340, y: 445, width: 25, height: 25))
+        showButton?.setImage(UIImage(named: "showIcon"), for: .normal)
+        showButton?.addTarget(self, action: #selector(showPsw), for: .touchUpInside)
+        view.addSubview(showButton!)
+        
         confirmaPswTextField = UITextField(frame: CGRect(x: 40, y: 520, width: width - 80, height: 40))
         confirmaPswTextField?.placeholder = "*************** "
         confirmaPswTextField?.isSecureTextEntry = true
@@ -134,6 +141,11 @@ class RegistroViewController: UIViewController{
         confirmaPswTextField?.layer.borderWidth = 3
         //pswTextField?.keyboardType = .default
         view.addSubview(confirmaPswTextField!)
+        
+        showButtonConfirm = UIButton(frame: CGRect(x: 340, y: 525, width: 25, height: 25))
+        showButtonConfirm?.setImage(UIImage(named: "showIcon"), for: .normal)
+        showButtonConfirm?.addTarget(self, action: #selector(showPsw2), for: .touchUpInside)
+        view.addSubview(showButtonConfirm!)
         //MARK:  LABEL -------
         usuarioLabel = UILabel(frame: CGRect(x: 30, y: 80, width: width/2 , height: 15))
         usuarioLabel?.textAlignment = NSTextAlignment.natural
@@ -184,6 +196,14 @@ class RegistroViewController: UIViewController{
         dismiss(animated:true )
     }
 
+    @objc func showPsw(){
+        pswTextField?.isSecureTextEntry.toggle()
+    }
+    @objc func showPsw2(){
+        confirmaPswTextField?.isSecureTextEntry.toggle()
+    }
+    
+    
    @objc func goToBooks(){
        var usuarioVar = ""
        var usuario = ""

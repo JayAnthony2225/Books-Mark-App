@@ -9,6 +9,10 @@ import UIKit
 
 struct Constants {
     
+    //MARK: - User Def
+    
+    var defaults = UserDefaults.standard
+    
     //MARK: - Strings
     static let userString: String = "User"
     static let passwordString: String = "Password"
