@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
     var precioLabel : UILabel?
     var iconRated : UIImageView?
     var backText : UILabel?
-    var autorFoto : UIImageView?
+    var tiraImagenes : UIImageView?
     var logOut : UILabel?
     var niceToLabel : UILabel?
         
@@ -72,12 +72,12 @@ class ProfileViewController: UIViewController {
 
         func createProductView(){
             
-            niceToLabel = UILabel(frame: CGRect(x: 10, y: 100, width: width - 20, height: 200))
-            niceToLabel?.text = "Welcome!\nNice To Have You Back."
-            niceToLabel?.textColor = .skyBlue
+            niceToLabel = UILabel(frame: CGRect(x: 10, y: 80, width: width - 20, height: 200))
+            niceToLabel?.text = "Nice To Have You Back."
+            niceToLabel?.textColor = .white
             niceToLabel?.numberOfLines = 5
             niceToLabel?.adjustsFontSizeToFitWidth = true
-            niceToLabel?.font = UIFont(name: "Arial Bold", size: 26)
+            niceToLabel?.font = UIFont(name: "Arial Bold", size: 28)
             view.addSubview(niceToLabel!)
 
             productContentView = UIView(frame: CGRect(x: 15, y: 250 , width: width - 30 , height: height/4))
@@ -86,34 +86,40 @@ class ProfileViewController: UIViewController {
             productContentView?.layer.cornerRadius = 10
             view.addSubview(productContentView!)
             
-            libroImage = UIImageView (frame: CGRect(x: 0, y: 300, width: 130, height: 150))
+            libroImage = UIImageView (frame: CGRect(x: 0, y: 290, width: 130, height: 150))
             libroImage?.image = UIImage(named: "MarcoImage")
             libroImage?.contentMode = .scaleAspectFill
             libroImage?.layer.cornerRadius = 10
             view.addSubview(libroImage!)
-//Persistencua USer
-            tituloLabel = UILabel(frame: CGRect(x: 150, y: 225, width: 250, height: 100))
+            
+            tiraImagenes = UIImageView (frame: CGRect(x: 150, y: 250, width: width / 10, height: height / 4))
+            tiraImagenes?.image = UIImage(named: "tiraImagenes")
+            tiraImagenes?.contentMode = .scaleAspectFill
+            tiraImagenes?.layer.cornerRadius = 10
+            view.addSubview(tiraImagenes!)
+//Persistencia de datos USer
+            tituloLabel = UILabel(frame: CGRect(x: 150, y: 175, width: 250, height: 100))
             tituloLabel?.text = UserDefaults.standard.string(forKey: "User")//"Marco A. Cruz "
-            tituloLabel?.textColor = .red
-            tituloLabel?.font = UIFont(name: "Optima Regular", size: 28)
+            tituloLabel?.textColor = .systemRed
+            tituloLabel?.font = UIFont(name: "Arial Bold", size: 30)
             view.addSubview(tituloLabel!)
             
-            autorLabel = UILabel(frame: CGRect(x: 150, y: 270, width: 250, height: 100))
-            autorLabel?.text = "FaceBook: velazquezMark"
+            autorLabel = UILabel(frame: CGRect(x: 190, y: 228, width: 250, height: 100))
+            autorLabel?.text = "VelazquezMark"
             autorLabel?.textColor = .seaBlue
-            autorLabel?.font = UIFont(name: "Arial Bold", size: 18)
+            autorLabel?.font = UIFont(name: "Arial Bold", size: 16)
             view.addSubview(autorLabel!)
             
-            categoriaLabel = UILabel(frame: CGRect(x: 150, y: 300, width: 250, height: 100))
-            categoriaLabel?.text = "GitHub: JAyAnthony225"
-            categoriaLabel?.font = UIFont(name: "Helvetica Bold", size: 18)
+            categoriaLabel = UILabel(frame: CGRect(x: 190, y: 311, width: 250, height: 100))
+            categoriaLabel?.text = "VelazquezAnthony225"
+            categoriaLabel?.font = UIFont(name: "Helvetica Bold", size: 16)
             categoriaLabel?.textColor = .black
             view.addSubview(categoriaLabel!)
             
-            precioLabel = UILabel(frame: CGRect(x: 150, y: 330, width: 250, height: 100))
-            precioLabel?.text = "twitter: jzandmark!@#"
-            precioLabel?.font = UIFont(name: "Helvetica Bold", size: 18)
-            precioLabel?.textColor = .skyBlue
+            precioLabel = UILabel(frame: CGRect(x: 190, y: 266, width: 250, height: 100))
+            precioLabel?.text = "jzandmark!@#twitter"
+            precioLabel?.font = UIFont(name: "Helvetica Bold", size: 16)
+            precioLabel?.textColor = .seaBlue
             view.addSubview(precioLabel!)
         }
    
