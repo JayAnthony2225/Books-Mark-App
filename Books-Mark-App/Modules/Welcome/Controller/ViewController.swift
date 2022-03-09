@@ -20,6 +20,7 @@ class ViewController: UIViewController{
     var registrateButton : UIButton?
     var showButton : UIButton?
     var userId : UILabel?
+    var sinCuenta : UILabel?
     var userIdTextField : UITextField?
    // var defaults = UserDefaults.standard
     
@@ -145,15 +146,22 @@ class ViewController: UIViewController{
         iniciarSesion?.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
         view.addSubview(iniciarSesion!)
         //--------------- Registrate    ---------------
-        registrateButton = UIButton(frame: CGRect(x: 60, y: 775, width: width - 120, height: 40))
+        
+        sinCuenta = UILabel(frame: CGRect(x: 65, y: 775 , width: width - 120, height: 40))
+        sinCuenta?.textAlignment = NSTextAlignment.left
+        sinCuenta?.backgroundColor = .clear
+        sinCuenta?.textColor = .white
+        sinCuenta?.font = UIFont(name: "", size: 16)
+        sinCuenta?.text = "Still without an account?  "
+        view.addSubview(sinCuenta!)
+        
+        registrateButton = UIButton(frame: CGRect(x: 165, y: 775, width: width - 120, height: 40))
         registrateButton?.backgroundColor = .clear
-        registrateButton?.layer.cornerRadius = 15
-        //registrateButton?.
-        registrateButton?.setTitle("Still no account? Sign up here! ", for: .normal)
+        registrateButton?.layer.cornerRadius = 16
+        registrateButton?.setTitle("Sign up here! ", for: .normal)
+        registrateButton?.setTitleColor(.cyan, for: .normal)
         registrateButton?.addTarget(self, action: #selector(goToRegistro), for: .touchUpInside)
-        //registrateButton?.layer.borderColor = UIColor.skyBlue.cgColor
-        //registrateButton?.layer.backgroundColor = UIColor.systemBlue.cgColor
-        view.addSubview(registrateButton!)
+         view.addSubview(registrateButton!)
     }
     
     @objc func showPsw(){

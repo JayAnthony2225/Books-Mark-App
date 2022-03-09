@@ -47,7 +47,7 @@ class RegistroViewController: UIViewController{
         backgroundBook?.contentMode = .scaleAspectFill
         backgroundBook?.layer.cornerRadius = 15
         view.addSubview(backgroundBook!)
-        
+      /*
         backButton = UIButton(frame: CGRect(x: 10, y: 45, width: 20, height: 20))
         backButton?.setImage(UIImage(named: "backButton"), for: .normal)
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
@@ -58,13 +58,13 @@ class RegistroViewController: UIViewController{
         backText?.textColor = .white
         backText?.font = UIFont(name: "Helvetica Bold", size: 20)
         view.addSubview(backText!)
-        
-        pasosLabel =  UILabel(frame: CGRect(x: 20, y: 95, width: 330, height: 40))
+      */
+        pasosLabel =  UILabel(frame: CGRect(x: 20, y: 90, width: 330, height: 40))
         pasosLabel?.backgroundColor = .clear
         pasosLabel?.text = "You are a few steps away from living the best experience."
         pasosLabel?.numberOfLines = 0
         pasosLabel?.adjustsFontSizeToFitWidth = true
-        pasosLabel?.font = UIFont(name: "Arial Bold", size: 16)
+        pasosLabel?.font = UIFont(name: "Arial Bold", size: 18)
         pasosLabel?.textColor = .white
         view.addSubview(pasosLabel!)
         
@@ -78,11 +78,12 @@ class RegistroViewController: UIViewController{
         view.addSubview(crearCuenta!)
     }
     func registraDescription(){ //180
-        registroView = UIView(frame: CGRect(x: 20, y: 180, width: width - 40, height: 450))
+        registroView = UIView(frame: CGRect(x: 20, y: 180 - 30, width: width - 40, height: 450))
         registroView?.backgroundColor = .white
         registroView?.layer.masksToBounds = true
         registroView?.layer.cornerRadius = 10
         view.addSubview(registroView!)
+        
         registrobackg = UIImageView (frame: CGRect(x: 0, y: 0, width: width , height: height))
         registrobackg?.image = UIImage(named: "registraback")
         registrobackg?.contentMode = .scaleAspectFill
@@ -95,7 +96,7 @@ class RegistroViewController: UIViewController{
         registraInfo?.textColor = blueTextColor
         registroView?.addSubview(registraInfo!)
   //MARK: TEXT FIELDS  --------
-        userIdTextField = UITextField(frame: CGRect(x: 40, y: 280, width: width - 80, height: 40))
+        userIdTextField = UITextField(frame: CGRect(x: 40, y: 280 - 30, width: width - 80, height: 40))
         userIdTextField?.textAlignment = NSTextAlignment.center
         //correoText?.text = ""
         userIdTextField?.placeholder = "Markoder   "
@@ -106,7 +107,7 @@ class RegistroViewController: UIViewController{
         //correoTextField?.keyboardType = .emailAddress
         view.addSubview(userIdTextField!)
         
-        correoTextField = UITextField(frame: CGRect(x: 40, y: 360, width: width - 80, height: 40))
+        correoTextField = UITextField(frame: CGRect(x: 40, y: 360 - 30, width: width - 80, height: 40))
         correoTextField?.textAlignment = NSTextAlignment.center
         correoTextField?.placeholder = "example@mail.com   "
         correoTextField?.backgroundColor = .white
@@ -115,7 +116,7 @@ class RegistroViewController: UIViewController{
         correoTextField?.layer.borderWidth = 3
         view.addSubview(correoTextField!)
         
-        pswTextField = UITextField(frame: CGRect(x: 40, y: 440, width: width - 80, height: 40))
+        pswTextField = UITextField(frame: CGRect(x: 40, y: 440 - 30, width: width - 80, height: 40))
         pswTextField?.placeholder = "*************** "
         pswTextField?.isSecureTextEntry = true
         pswTextField?.textAlignment = NSTextAlignment.center
@@ -126,12 +127,12 @@ class RegistroViewController: UIViewController{
         //pswTextField?.keyboardType = .default
         view.addSubview(pswTextField!)
         
-        showButton = UIButton(frame: CGRect(x: 340, y: 445, width: 25, height: 25))
+        showButton = UIButton(frame: CGRect(x: 340, y: 445 - 30, width: 25, height: 25))
         showButton?.setImage(UIImage(named: "showIcon"), for: .normal)
         showButton?.addTarget(self, action: #selector(showPsw), for: .touchUpInside)
         view.addSubview(showButton!)
         
-        confirmaPswTextField = UITextField(frame: CGRect(x: 40, y: 520, width: width - 80, height: 40))
+        confirmaPswTextField = UITextField(frame: CGRect(x: 40, y: 520 - 30, width: width - 80, height: 40))
         confirmaPswTextField?.placeholder = "*************** "
         confirmaPswTextField?.isSecureTextEntry = true
         confirmaPswTextField?.textAlignment = NSTextAlignment.center
@@ -142,7 +143,7 @@ class RegistroViewController: UIViewController{
         //pswTextField?.keyboardType = .default
         view.addSubview(confirmaPswTextField!)
         
-        showButtonConfirm = UIButton(frame: CGRect(x: 340, y: 525, width: 25, height: 25))
+        showButtonConfirm = UIButton(frame: CGRect(x: 340, y: 525 - 30, width: 25, height: 25))
         showButtonConfirm?.setImage(UIImage(named: "showIcon"), for: .normal)
         showButtonConfirm?.addTarget(self, action: #selector(showPsw2), for: .touchUpInside)
         view.addSubview(showButtonConfirm!)
@@ -191,10 +192,10 @@ class RegistroViewController: UIViewController{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true) }
     
-    @objc func backAction(){
-        print("back action")
-        dismiss(animated:true )
-    }
+//    @objc func backAction(){
+//        print("back action")
+//        dismiss(animated:true )
+//    }
 
     @objc func showPsw(){
         pswTextField?.isSecureTextEntry.toggle()
@@ -215,7 +216,7 @@ class RegistroViewController: UIViewController{
        var pswCheckVar = ""
        var alertText = ""
        // Esto es para cambiar de color el boton al ser precionado
-       crearCuenta?.backgroundColor = blueTextColor
+       crearCuenta?.backgroundColor = .cyan
        crearCuenta?.alpha = 0.5
        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
            self.crearCuenta?.alpha = 1.0
