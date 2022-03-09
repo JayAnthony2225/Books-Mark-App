@@ -24,7 +24,7 @@ class LabelViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .white
-        label.font = UIFont(name: "Helvetica Bold", size: 30)
+        label.font = UIFont(name: "Helvetica Bold", size: 26)
         self.view.addSubview(label)
         self.view.backgroundColor = .nightBlue
        

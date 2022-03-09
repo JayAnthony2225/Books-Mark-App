@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
         }
         
         func initUI() {
-            view.backgroundColor = .nightBlue
+            view.backgroundColor = .white
             navigationItem.title = Constants.dashboardTitleString
         }
         

@@ -15,7 +15,7 @@ class RegistroViewController: UIViewController{
     var registrobackg : UIImageView?
     var crearCuenta : UIButton?
     var correoTextField : UITextField?
-    var usuarioText : UITextField?
+    var userIdTextField : UITextField?
     var pswTextField : UITextField?
     var confirmaPswTextField : UITextField?
     var correoLabel : UILabel?
@@ -95,16 +95,16 @@ class RegistroViewController: UIViewController{
         registraInfo?.textColor = blueTextColor
         registroView?.addSubview(registraInfo!)
   //MARK: TEXT FIELDS  --------
-        usuarioText = UITextField(frame: CGRect(x: 40, y: 280, width: width - 80, height: 40))
-        usuarioText?.textAlignment = NSTextAlignment.center
+        userIdTextField = UITextField(frame: CGRect(x: 40, y: 280, width: width - 80, height: 40))
+        userIdTextField?.textAlignment = NSTextAlignment.center
         //correoText?.text = ""
-        usuarioText?.placeholder = "Markoder   "
-        usuarioText?.backgroundColor = .white
-        usuarioText?.layer.cornerRadius = 5
-        usuarioText?.layer.borderColor = UIColor.white.cgColor
-        usuarioText?.layer.borderWidth = 3
+        userIdTextField?.placeholder = "Markoder   "
+        userIdTextField?.backgroundColor = .white
+        userIdTextField?.layer.cornerRadius = 5
+        userIdTextField?.layer.borderColor = UIColor.white.cgColor
+        userIdTextField?.layer.borderWidth = 3
         //correoTextField?.keyboardType = .emailAddress
-        view.addSubview(usuarioText!)
+        view.addSubview(userIdTextField!)
         
         correoTextField = UITextField(frame: CGRect(x: 40, y: 360, width: width - 80, height: 40))
         correoTextField?.textAlignment = NSTextAlignment.center
@@ -221,8 +221,8 @@ class RegistroViewController: UIViewController{
            self.crearCuenta?.alpha = 1.0
            self.crearCuenta?.backgroundColor = self.darkBlueTextColor
        }
-       if usuarioText?.text != ""{
-           usuario = usuarioText?.text ?? ""
+       if userIdTextField?.text != ""{
+           usuario = userIdTextField?.text ?? ""
            usuarioVar = String(usuario)
            print("usuario ok , es: \(usuarioVar))")
            correo = correoTextField?.text ?? ""
@@ -234,7 +234,55 @@ class RegistroViewController: UIViewController{
                pswCheck = confirmaPswTextField?.text ?? ""
                pswCheckVar = String(pswCheck)
             
-               if pswVar == pswCheckVar && pswVar != "" && pswCheckVar != ""{
+               if pswVar == pswCheckVar && pswVar != "" && pswCheckVar != ""   {
+               
+                    //MARK: TAB BAR Setting
+                                       
+                   ///----------- esta porcion de codigo es solo para hacer pruebas con el userDefaults
+                                   var userSet = ""
+                                       if let user = userIdTextField?.text{
+                                           if user != ""{
+                                               userSet = user
+                                               print(user)
+                                              // defaults.set(user, forKey: "User") // Aqui guardamos el string user en Userdefaults
+                                               UserDefaults.standard.set(userSet, forKey: "User")
+                                           }
+                                       //defaults.set(userSet, forKey: "User") // Aqui guardamos el string user en Userdefaults
+                                          
+                                       }
+                   ////-------------- hasta aqui lo usare para hacer pruebas del user defaults
+                                  let tabBarViewController = UITabBarController()  // Codigo para TAB BAR
+                                       
+                                   let libreriaOption = LibreriaViewController()
+                                   let searchOption = SearchViewController()
+                                   let profileOption = ProfileViewController()
+                                       
+                                       libreriaOption.title = "Home"
+                                       searchOption.title = "Search"
+                                       profileOption.title = "User"
+                                       
+                                   tabBarViewController.setViewControllers([libreriaOption, searchOption, profileOption], animated: true)
+                                       guard let items = tabBarViewController.tabBar.items else {
+                                           return
+                                       }
+                                       let images = ["house", "magnifyingglass", "person.circle"]
+                                       for x in 0..<items.count {
+                                           items[2].badgeValue = "3"
+                                           items[x].image = UIImage(systemName: images[x])
+                                       }
+                                       tabBarViewController.modalPresentationStyle = .fullScreen
+                                       present(tabBarViewController, animated: true)
+                                       //libreriaOption.modalPresentationStyle = .fullScreen
+                                       //present(libreriaOption, animated: true,completion:
+                                     //  {
+                                      print("Presentando Tab bar y Views")
+                                      //})
+                                       
+                                       }
+               
+           
+            
+                   /*
                    print("Psw OK!, Pase Ud. buen hombre, password: \(pswVar) ")
                    let libreriaOption = LibreriaViewController()
                    libreriaOption.modalPresentationStyle = .fullScreen
@@ -242,7 +290,10 @@ class RegistroViewController: UIViewController{
                         {
                         print("Presentando View de Registro")
                         })
-               }else{
+                */
+               //}
+              
+               else{
                    print("Error en el psw , no coinciden")
                    alertText = "Error en contraseña, verifique "
                    let alert = UIAlertController(title: "Error de datos", message: alertText, preferredStyle: .alert)
@@ -264,6 +315,7 @@ class RegistroViewController: UIViewController{
            self.present(alert,animated: true,completion: nil)
        }
 }
+
      func isValidEmail(_ email: String) -> Bool
          {
          let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

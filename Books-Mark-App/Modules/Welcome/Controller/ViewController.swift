@@ -168,7 +168,8 @@ class ViewController: UIViewController{
     
     @objc func goToBooks()
                 {
-                    iniciarSesion?.backgroundColor = .seaBlue
+                    // este codigo es para el cambio de color de los botones
+                    iniciarSesion?.backgroundColor = .cyan//.seaBlue
                     iniciarSesion?.alpha = 0.5
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         self.iniciarSesion?.alpha = 1.0
