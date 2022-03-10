@@ -14,8 +14,8 @@ class DetailBookViewController: UIViewController {
     var descriptionView : UIView?
     var autorView : UIView?
     var backButton : UIButton?
-    var descripcionButton : UIButton?
-    var detalleButton : UIButton?
+   // var descripcionButton : UIButton?
+  //  var detalleButton : UIButton?
     var libro : Libro?
     var contenedorText : UIView?
     var contenedorText1 : UIView?
@@ -28,8 +28,9 @@ class DetailBookViewController: UIViewController {
     var categoriaLabel : UILabel?
     var precioLabel : UILabel?
     var iconRated : UIImageView?
-    var backText : UILabel?
+//    var backText : UILabel?
     var autorFoto : UIImageView?
+    var descripLabel : UILabel?
     
     var darkBlueTextColor = UIColor(displayP3Red: 27/255, green: 38/255, blue: 44/255, alpha: 1)
     var blueTextColor = UIColor(displayP3Red: 15/255, green: 76/255, blue: 117/255, alpha: 1)
@@ -61,12 +62,19 @@ class DetailBookViewController: UIViewController {
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backButton!)
         
-        backText = UILabel(frame: CGRect(x: 37, y: 30, width: 100, height: 50))
-        backText?.text = "Regresar"
-        backText?.textColor = darkBlueTextColor
-        backText?.font = UIFont(name: "Helvetica Bold", size: 20)
-        view.addSubview(backText!)
         
+        tituloLabel = UILabel(frame: CGRect(x: 15, y: 75, width: 250, height: 100))
+        tituloLabel?.text = libro?.tituloLibro ?? ""
+        tituloLabel?.textColor = .nightBlue
+        tituloLabel?.font = UIFont(name: "Helvetica Bold", size: 30)
+        view.addSubview(tituloLabel!)
+
+//        backText = UILabel(frame: CGRect(x: 37, y: 30, width: 100, height: 50))
+//        backText?.text = "Regresar"
+//        backText?.textColor = darkBlueTextColor
+//        backText?.font = UIFont(name: "Helvetica Bold", size: 20)
+//        view.addSubview(backText!)
+//
        
     }
 
@@ -90,12 +98,7 @@ class DetailBookViewController: UIViewController {
         //libroImage?.layer.cornerRadius = 5
         //libroImage?.layer.masksToBounds = true // esto es para los bordes y que se ajuste la imagen
         productContentView?.addSubview(libroImage!)
-        
-        tituloLabel = UILabel(frame: CGRect(x: 15, y: 13, width: 200, height: 100))
-        tituloLabel?.text = libro?.tituloLibro ?? ""
-        tituloLabel?.textColor = whiteTextColor
-        tituloLabel?.font = UIFont(name: "Helvetica Bold", size: 22)
-        productContentView?.addSubview(tituloLabel!)
+       
         
         autorLabel = UILabel(frame: CGRect(x: 20, y: 75, width: 200, height: 100))
         autorLabel?.text = libro?.autor ?? ""
@@ -109,8 +112,8 @@ class DetailBookViewController: UIViewController {
         categoriaLabel?.textColor = blueTextColor
         productContentView?.addSubview(categoriaLabel!)
         
-        precioLabel = UILabel(frame: CGRect(x: 20, y: 125, width: 200, height: 100))
-        precioLabel?.text = "$\(String(describing: libro?.precio ?? 0))0MX"
+        precioLabel = UILabel(frame: CGRect(x: 20, y: 125, width: 100, height: 50))
+        precioLabel?.text = "Preio:\n$\(String(describing: libro?.precio ?? 0))0MX"
         precioLabel?.font = UIFont(name: "Helvetica Bold", size: 16)
         precioLabel?.textColor = lightBTextColor
         productContentView?.addSubview(precioLabel!)
@@ -150,21 +153,22 @@ class DetailBookViewController: UIViewController {
         autorLabel3?.font = UIFont(name: "Arial Bold", size: 18)
         descriptionView?.addSubview(autorLabel3!)
         
-        descripcionButton = UIButton(frame: CGRect(x: 20, y: 15, width: width/3, height: 50))
-        descripcionButton?.setTitle("Descripción", for: .normal)
-        descripcionButton?.backgroundColor = darkBlueTextColor
-        descripcionButton?.layer.borderColor = UIColor.white.cgColor
-        descripcionButton?.layer.cornerRadius = 10
-        descripcionButton?.layer.borderWidth = 1
-        descriptionView?.addSubview(descripcionButton!)
-        
-        detalleButton = UIButton(frame: CGRect(x: 190, y: 15, width: width/3, height: 50))
-        detalleButton?.setTitle("Detalles", for: .normal)
-        detalleButton?.backgroundColor = darkBlueTextColor
-        detalleButton?.layer.borderColor = UIColor.white.cgColor
-        detalleButton?.layer.cornerRadius = 10
-        detalleButton?.layer.borderWidth = 1
-        //descriptionView?.addSubview(detalleButton!)
+        descripLabel = UILabel(frame: CGRect(x: 15, y: 25, width: 200, height: 100))
+        descripLabel?.text = "Descripción:"
+        descripLabel?.textColor = blueTextColor
+        descripLabel?.numberOfLines = 0
+        descripLabel?.adjustsFontSizeToFitWidth = true
+        descripLabel?.font = UIFont(name: "Arial Bold", size: 26)
+        descriptionView?.addSubview(descripLabel!)
+//
+//        descripcionButton = UIButton(frame: CGRect(x: 20, y: 15, width: width/3, height: 50))
+//        descripcionButton?.setTitle("Descripción", for: .normal)
+//        descripcionButton?.backgroundColor = darkBlueTextColor
+//        descripcionButton?.layer.borderColor = UIColor.white.cgColor
+//        descripcionButton?.layer.cornerRadius = 10
+//        descripcionButton?.layer.borderWidth = 1
+//        descriptionView?.addSubview(descripcionButton!)
+//
     }
     
     func autorDescription(){

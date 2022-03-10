@@ -26,11 +26,15 @@ class LibreriaViewController : UIViewController {
     var buscarAutor1 : UIButton?
     var buscarCategoria : UIButton?
     var buscarLibrosXautor : UIButton?
+    var cartCount : UIButton?
+    var counter = 0
+    var counterLabel : UILabel?
     
     var dataSource : BookObject?
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
+    var cart = [String:Any]()
   // NUEVA VARIABLE
     var libreriaCollectionView : UICollectionView = {
                             let bookLayout = UICollectionViewFlowLayout()
@@ -46,6 +50,14 @@ class LibreriaViewController : UIViewController {
                             collection.showsHorizontalScrollIndicator = true
                             return collection
     }()
+    
+//    var counterLabel : UILabel = {
+//       let label = UILabel()
+//        label.text = "0"
+//        label.backgroundColor = .clear
+//        label.textColor = .red
+//        return label
+//    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .nightBlue
@@ -54,6 +66,8 @@ class LibreriaViewController : UIViewController {
     }
     func initUI(){
         getData()
+ 
+        
     //MARK: Init Libreria Collection View ____
         libreriaCollectionView.delegate = self
         libreriaCollectionView.dataSource = self
@@ -164,6 +178,25 @@ class LibreriaViewController : UIViewController {
         buscarLibrosXautor?.layer.borderWidth = 1
         buscarLibrosXautor?.addTarget(self, action: #selector(bookByAutor), for: .touchUpInside)
         view.addSubview(buscarLibrosXautor!)
+        
+        
+//        view.addSubview(counterLabel)
+//        counterLabel.addAnchorsAndSize(width: 30, height: 30, left: nil, top: 5, right: 10, bottom: nil)
+        
+        counterLabel = UILabel(frame: CGRect(x: 355, y: 47, width: 30, height: 30))
+        counterLabel?.text = "0"
+        //counterLabel?.textAlignment = .left
+        //counterLabel?.font = UIFont(name: "Helvetica Bold", size: 20)
+        counterLabel?.textColor = .black//blueTextColor
+        view.addSubview(counterLabel!)
+        
+        
+        cartCount = UIButton(frame: CGRect(x: 330, y: 70, width: 35, height: 35))
+        cartCount?.setImage(UIImage(named: "cart"), for: .normal)
+       // backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        view.addSubview(cartCount!)
+        
+        
     }
     func getData(){
 //MARK: Categoria Drama --------------
@@ -245,6 +278,7 @@ extension LibreriaViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let libroCell = dataSource?.bookCategorias?[indexPath.section].librosInfo?[indexPath.row]
         let bookCell = bookTableViewCell(book: libroCell!)
+        bookCell.delegate = self
         return bookCell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -301,3 +335,32 @@ extension LibreriaViewController : UITableViewDelegate{
     }
     
     
+extension LibreriaViewController : MenuTableViewCellDelegate {
+    func addToCard(){
+    //func addToCard(product : Producto, count : Int) {
+//
+//        cart[product.nombre ?? ""] = count
+//        UserDefaults.standard.set(cart, forKey: "superCart")
+//        countCounter()
+//
+        print("Se agrego un nuevo producto al Carrito")
+        if counter < 30 {
+        counter += 1
+        counterLabel?.text = "\(counter)"
+       // cartCount.badgeValue = "1"
+        }
+        else {
+            print("fuera de inventario chavo 🥲")
+        }
+    }
+    
+    func lessToCard() {
+        print("Se quita un producto al Carrito")
+        counter -= 1
+        counterLabel?.text = "\(counter)"
+    }
+
+    
+}
+
+
