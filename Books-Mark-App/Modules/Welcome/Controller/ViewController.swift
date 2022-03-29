@@ -11,7 +11,6 @@ class ViewController: UIViewController{
     var backImage2: UIImageView?
     var readText : UILabel?
     var bienvenidoLabel : UILabel? // fistlabel
-    //var totalLabel : UILabel?
     var correoLabel : UILabel?
     var correoTextField : UITextField?
     var pswLabel : UILabel?
@@ -45,7 +44,7 @@ class ViewController: UIViewController{
         view.addSubview(backImage!)
         
         //--------------- icon image ---------------     360
-        backImage2 = UIImageView(frame: CGRect(x: 170, y: 90, width: 80, height: 80))
+        backImage2 = UIImageView(frame: CGRect(x: 160, y: 90, width: 80, height: 80))
         backImage2?.image = UIImage(named:"bookIcon")
         backImage2?.layer.masksToBounds = true
         backImage2?.contentMode = .scaleAspectFill
@@ -58,9 +57,6 @@ class ViewController: UIViewController{
         bienvenidoLabel?.backgroundColor = .clear
         bienvenidoLabel?.textColor = .nightBlue
         bienvenidoLabel?.font = UIFont(name: "Arial Bold", size: 28)
-        //bienvenidoLabel?.layer.cornerRadius = 10
-        //bienvenidoLabel?.layer.borderColor = UIColor.black.cgColor
-        //bienvenidoLabel?.layer.borderWidth = 3
         bienvenidoLabel?.text = " ¡Welcome! "
         view.addSubview(bienvenidoLabel!)
         
@@ -84,30 +80,6 @@ class ViewController: UIViewController{
         userIdTextField?.layer.borderColor = UIColor.white.cgColor
         userIdTextField?.layer.borderWidth = 3
         view.addSubview(userIdTextField!)
-   /*
-        //---------------Encabezado Correo ------------585---
-        correoLabel = UILabel(frame: CGRect(x: 35, y: 285 + 20, width: 50 , height: 15))
-        correoLabel?.textAlignment = NSTextAlignment.left
-        correoLabel?.backgroundColor = .clear
-        correoLabel?.textColor = .nightBlue
-        correoLabel?.font = UIFont(name: "Arial Bold", size: 15)
-        correoLabel?.layer.cornerRadius = 2
-        correoLabel?.layer.borderColor = UIColor.white.cgColor
-        correoLabel?.layer.borderWidth = 0
-        correoLabel?.text = "E-mail "
-        view.addSubview(correoLabel!)
-        //--------------- Correo TXT FIELD---------------    605
-        correoTextField = UITextField(frame: CGRect(x: 30, y: 305 + 20, width: width - 60, height: 40))
-        correoTextField?.textAlignment = NSTextAlignment.center
-        correoTextField?.placeholder = "example@mail.com   "
-        correoTextField?.backgroundColor = .white
-        correoTextField?.layer.cornerRadius = 5
-        correoTextField?.layer.borderColor = UIColor.white.cgColor
-        correoTextField?.layer.borderWidth = 3
-       // correoTextField?.keyboardType = .emailAddress
-       // correoTextField?.endEditing(true)  //endEditing(true)
-        view.addSubview(correoTextField!)
-   */
       //---------------Encabezado password ---------650------
         pswLabel = UILabel(frame: CGRect(x: 35, y: 350 + 20, width: width/5 , height: 15))
         pswLabel?.textAlignment = NSTextAlignment.left
@@ -131,7 +103,7 @@ class ViewController: UIViewController{
         //pswTextField?.keyboardType = .default
         view.addSubview(pswTextField!)
 
-        showButton = UIButton(frame: CGRect(x: 340, y: 375 + 20 , width: 25, height: 25))
+        showButton = UIButton(frame: CGRect(x: 325, y: 375 + 20 , width: 25, height: 25))
         showButton?.setImage(UIImage(named: "showIcon"), for: .normal)
         showButton?.addTarget(self, action: #selector(showPsw), for: .touchUpInside)
         view.addSubview(showButton!)
@@ -147,17 +119,17 @@ class ViewController: UIViewController{
         view.addSubview(iniciarSesion!)
         //--------------- Registrate    ---------------
         
-        sinCuenta = UILabel(frame: CGRect(x: 65, y: 775 , width: width - 120, height: 40))
+        sinCuenta = UILabel(frame: CGRect(x: 55, y: 775 , width: width - 120, height: 40))
         sinCuenta?.textAlignment = NSTextAlignment.left
         sinCuenta?.backgroundColor = .clear
         sinCuenta?.textColor = .white
-        sinCuenta?.font = UIFont(name: "", size: 16)
-        sinCuenta?.text = "Still without an account?  "
+        sinCuenta?.font = UIFont(name: "", size: 17)
+        sinCuenta?.text = "Without An Account Yet?  "
         view.addSubview(sinCuenta!)
         
-        registrateButton = UIButton(frame: CGRect(x: 165, y: 775, width: width - 120, height: 40))
+        registrateButton = UIButton(frame: CGRect(x: 170, y: 775, width: width - 120, height: 40))
         registrateButton?.backgroundColor = .clear
-        registrateButton?.layer.cornerRadius = 16
+        registrateButton?.layer.cornerRadius = 18
         registrateButton?.setTitle("Sign up here! ", for: .normal)
         registrateButton?.setTitleColor(.cyan, for: .normal)
         registrateButton?.addTarget(self, action: #selector(goToRegistro), for: .touchUpInside)
@@ -229,14 +201,16 @@ class ViewController: UIViewController{
                    //})
                     
                     }
+    
+    ///________
 /*
         var correoVar = ""
         var alertText = ""
         var passwordVar = " "
        // var correo = ""
  
- NOTA: es importante saber que tome la descicion de eliminar el textFiel de correo , ya que
- quiero usar el UserDefaults. stander para ser mostrado en logIn y prefiero que sea USER al Correo electronico , tambien por otra parte si yaexiste un usiario no veo porque debe ingresar su correo , lo delimite para que sea solo al hacer una nueva cuenta, entonces slo valida con ID y psw
+ //NOTA: es importante saber que tome la descicion de eliminar el textFiel de correo , ya que
+// quiero usar el UserDefaults. stander para ser mostrado en logIn y prefiero que sea USER al Correo electronico , tambien por otra parte si yaexiste un usiario no veo porque debe ingresar su correo , lo delimite para que sea solo al hacer una nueva cuenta, entonces slo valida con ID y psw
  
                 if let correo = correoTextField?.text{
                 correoVar = String(correo)
@@ -280,8 +254,8 @@ class ViewController: UIViewController{
                     self.present(alert,animated: true,completion: nil)
                     }
                 }
- */
 
+*/
 //MARK: Objeto- Funcion - Registro
         @objc func goToRegistro(){
            //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar

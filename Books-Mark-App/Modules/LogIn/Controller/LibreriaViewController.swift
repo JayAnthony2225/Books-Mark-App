@@ -34,6 +34,7 @@ class LibreriaViewController : UIViewController {
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
+    
     var cart = [String:Any]()
   // NUEVA VARIABLE
     var libreriaCollectionView : UICollectionView = {
@@ -61,11 +62,11 @@ class LibreriaViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .nightBlue
-        
+        getData()
         initUI()
     }
     func initUI(){
-        getData()
+        
  
         
     //MARK: Init Libreria Collection View ____
@@ -199,7 +200,10 @@ class LibreriaViewController : UIViewController {
         
     }
     func getData(){
-//MARK: Categoria Drama --------------
+        cart = UserDefaults.standard.dictionary(forKey: "superCart") ?? [String:Any]()
+        countCounter()
+        countCounterTake()
+        //MARK: Categoria Drama --------------
         let libroCohello = Libro(tituloLibro: "El alquimista", autor: "Paulo Coelho", category: "Drama", precio: 350.00, rate: "4estrellas", portadaImage: "alquimistaImage", descripcion: "libro recomendado para lecturas de autosuperacion", autorFoto: "coelhoFoto", autorInfo: "Es uno de los escritores y novelistas más leídos del mundo con más de 320 millones de libros vendidos.")
         let cienSoledad = Libro(tituloLibro: "Cien años de soledad", autor: "Garcia Marquez", category: "Drama", precio: 590.0, rate: "5estrellas", portadaImage: "cienImage", descripcion: "best seller de Gacia Marquez", autorFoto: "marquezFoto", autorInfo: "Reconocido principalmente por sus novelas y cuentos, muere el 17 de abril de 2014, Ciudad de México")
         let casaEspiritus = Libro(tituloLibro: "La casa de los espiritus", autor: "Isabel Allende", category: "Drama", precio: 370.0 , rate: "5estrellas", portadaImage: "espiritusImage", descripcion: "Unos de los titulos mas galardonados de Isabel ", autorFoto: "isabelFoto", autorInfo: "Escritora chilena con nacionalidad estadounidense, Premio Nacional de Literatura de su país en 2010.")
@@ -277,7 +281,9 @@ extension LibreriaViewController : UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let libroCell = dataSource?.bookCategorias?[indexPath.section].librosInfo?[indexPath.row]
-        let bookCell = bookTableViewCell(book: libroCell!)
+       // let bookCell = bookTableViewCell(book: libroCell!)
+        let currentCounter = cart[libroCell?.tituloLibro ?? ""]  ?? 0
+        let bookCell = bookTableViewCell(book: libroCell!, numberOf: currentCounter as! Int )
         bookCell.delegate = self
         return bookCell
     }
@@ -335,32 +341,49 @@ extension LibreriaViewController : UITableViewDelegate{
     }
     
     
-extension LibreriaViewController : MenuTableViewCellDelegate {
-    func addToCard(){
-    //func addToCard(product : Producto, count : Int) {
-//
-//        cart[product.nombre ?? ""] = count
-//        UserDefaults.standard.set(cart, forKey: "superCart")
+extension LibreriaViewController : MenuTableViewCellDelegate{
+    func addToCard(product : Libro, count : Int) {
+        cart[product.tituloLibro ?? ""] = count
+        UserDefaults.standard.set(cart, forKey: "superCart")
+        countCounter()
+//        if counter < 30 {
+//        counter += 1
+//        counterLabel?.text = "\(counter)"
+//       // cartCount.badgeValue = "1"
+//        }
+//        else {
+//            print("fuera de inventario chavo 🥲")
+//        }
+        print("Se agrego un nuevo libro")
+    }
+    
+    func lessToCard(product : Libro, count : Int) {
+        
+        cart[product.tituloLibro ?? ""] = count
+        UserDefaults.standard.set(cart, forKey: "superCart")
 //        countCounter()
-//
-        print("Se agrego un nuevo producto al Carrito")
-        if counter < 30 {
-        counter += 1
-        counterLabel?.text = "\(counter)"
-       // cartCount.badgeValue = "1"
-        }
-        else {
-            print("fuera de inventario chavo 🥲")
-        }
+        countCounterTake()
+        print("Se quita un libro al Carrito")
+//        counter -= 1
+//        counterLabel?.text = "\(counter)"
     }
     
-    func lessToCard() {
-        print("Se quita un producto al Carrito")
-        counter -= 1
+    func countCounter(){
+        counter = 0
+        for product in cart{
+            counter += product.value as! Int
+        }
         counterLabel?.text = "\(counter)"
+        print(counter)
     }
-
-    
+    func countCounterTake(){
+        counter = 0
+        for product in cart{
+            counter -= product.value as! Int
+        }
+        counterLabel?.text = "\(counter)"
+        print(counter)
+    }
 }
 
 

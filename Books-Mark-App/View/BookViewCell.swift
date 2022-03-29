@@ -7,8 +7,9 @@
 import UIKit
 
 protocol MenuTableViewCellDelegate{
-    func addToCard()
-    func lessToCard()
+    //func addToCard()
+    func addToCard(product : Libro, count : Int)
+    func lessToCard(product : Libro, count : Int)
 }
 
     
@@ -23,6 +24,7 @@ class bookTableViewCell : UITableViewCell{
     var iconRated : UIImageView?
     var icon2 : UIImageView?
     var book1 : Libro?
+//    var libro : Libro?
     
     var delegate : MenuTableViewCellDelegate?
     var lessButton: UIButton?
@@ -43,9 +45,10 @@ class bookTableViewCell : UITableViewCell{
 //        return label
 //    }()
     
-    init (book : Libro){
+    init (book : Libro, numberOf : Int){
         super.init(style: .default, reuseIdentifier: nil)
         self.book1 = book
+        self.count = numberOf
         self.backgroundColor = .nightBlue
         initUI()
     }
@@ -129,29 +132,31 @@ class bookTableViewCell : UITableViewCell{
     
 
     @objc func addProduct(){
-       // print("ADD \(producto?.nombre)")
+        print("ADD \(book1?.tituloLibro)")
         if count < 10{
         count += 1
         counterLabel?.text = "\(count)"
-        delegate?.addToCard()
+        print(count)
+            delegate?.addToCard(product: book1!, count: count)
     }  else {
         print("fuera de inventario chavo 🥲")
     }
     }
+
+
     @objc func lessProduct(){
-      //  print("take \(producto?.nombre)")
+        print("LESS \(book1?.tituloLibro)")
         if count > 0 {
         count -= 1
         counterLabel?.text = "\(count)"
-        delegate?.lessToCard()
+        print(count)
+        delegate?.lessToCard(product: book1!, count: count)
         }
         else{
             print("operacion invalida")
         }
     }
-    
-    
-    
+
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has no been implemented")

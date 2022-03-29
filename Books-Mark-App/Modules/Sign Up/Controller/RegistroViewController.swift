@@ -47,18 +47,7 @@ class RegistroViewController: UIViewController{
         backgroundBook?.contentMode = .scaleAspectFill
         backgroundBook?.layer.cornerRadius = 15
         view.addSubview(backgroundBook!)
-      /*
-        backButton = UIButton(frame: CGRect(x: 10, y: 45, width: 20, height: 20))
-        backButton?.setImage(UIImage(named: "backButton"), for: .normal)
-        backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        view.addSubview(backButton!)
-        
-        backText = UILabel(frame: CGRect(x: 37, y: 30, width: 100, height: 50))
-        backText?.text = "Back"
-        backText?.textColor = .white
-        backText?.font = UIFont(name: "Helvetica Bold", size: 20)
-        view.addSubview(backText!)
-      */
+     
         pasosLabel =  UILabel(frame: CGRect(x: 20, y: 90, width: 330, height: 40))
         pasosLabel?.backgroundColor = .clear
         pasosLabel?.text = "You are a few steps away from living the best experience."
@@ -68,7 +57,7 @@ class RegistroViewController: UIViewController{
         pasosLabel?.textColor = .white
         view.addSubview(pasosLabel!)
         
-        crearCuenta = UIButton(frame: CGRect(x: 60, y: 735, width: width - 120, height: 40))
+        crearCuenta = UIButton(frame: CGRect(x: 60, y: 690, width: width - 120, height: 40))
         crearCuenta?.backgroundColor = darkBlueTextColor
         crearCuenta?.layer.cornerRadius = 15
         crearCuenta?.setTitle("Sign up", for: .normal)
@@ -127,7 +116,7 @@ class RegistroViewController: UIViewController{
         //pswTextField?.keyboardType = .default
         view.addSubview(pswTextField!)
         
-        showButton = UIButton(frame: CGRect(x: 340, y: 445 - 30, width: 25, height: 25))
+        showButton = UIButton(frame: CGRect(x: 320, y: 445 - 30, width: 25, height: 25))
         showButton?.setImage(UIImage(named: "showIcon"), for: .normal)
         showButton?.addTarget(self, action: #selector(showPsw), for: .touchUpInside)
         view.addSubview(showButton!)
@@ -143,7 +132,7 @@ class RegistroViewController: UIViewController{
         //pswTextField?.keyboardType = .default
         view.addSubview(confirmaPswTextField!)
         
-        showButtonConfirm = UIButton(frame: CGRect(x: 340, y: 525 - 30, width: 25, height: 25))
+        showButtonConfirm = UIButton(frame: CGRect(x: 320, y: 525 - 30, width: 25, height: 25))
         showButtonConfirm?.setImage(UIImage(named: "showIcon"), for: .normal)
         showButtonConfirm?.addTarget(self, action: #selector(showPsw2), for: .touchUpInside)
         view.addSubview(showButtonConfirm!)

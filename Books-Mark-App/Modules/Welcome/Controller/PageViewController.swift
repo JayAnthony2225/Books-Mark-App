@@ -17,8 +17,8 @@ class PageViewController: UIPageViewController {
         super.viewDidLoad()
         self.dataSource = self
        labelOneViewController.text = "Hello!"
-       labelTwoViewController.text = "Ready for the best experience?"
-        labelThreeViewController.text = "Let's go!"
+       labelTwoViewController.text = "Are You Ready?"
+        labelThreeViewController.text = "Let's Go!"
         //Set initial viewController....
         self.setViewControllers([labelOneViewController], direction: .forward, animated: true, completion: nil)
         self.view.backgroundColor = .tertiaryLabel

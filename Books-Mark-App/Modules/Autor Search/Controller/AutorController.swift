@@ -5,6 +5,7 @@
 //  Created by Marco Cruz Velázquez on 2/6/22.
 //
 import Foundation
+import Alamofire
 
 
 import UIKit
