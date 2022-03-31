@@ -4,7 +4,7 @@ Books Challenge !
 This repository was created by Marco A. Cruz Velazquez
 This is a Kodemia IOS's boopCamp complete challenge: APPBOOK
 
-Content
+#Content
 This proyect has three branches for APP BOOK from Kodemia bootcamp: 
 Main: were is the main Branch this is only for tested an approved code. 
 develop: Contains review code and approve tests of the feature repositories 
@@ -13,8 +13,16 @@ feature Branch: contains the test of the use cases.
 main branch has 90% of commits because this was my first APP with no colaborative work but has extenden branches to be ready for the future colaborations.
 
 
-How create a new branch:
+#How create a new branch:
 Create a new branch from the main branch with the following format 'feature'/CS_#branch
+
+# Architecture
+Its recommended to use MVVM but proyect was born as MVC.
+# Work flow
+as recommended information check: (https://www.conventionalcommits.org/en/v1.0.0/)
+
+# Folder structure
+For the folder structures is recommneded to use:
 
 git checkout main git checkout -b feature/CS_#branch+activity
 
