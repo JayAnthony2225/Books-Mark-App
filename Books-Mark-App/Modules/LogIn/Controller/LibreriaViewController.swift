@@ -66,9 +66,7 @@ class LibreriaViewController : UIViewController {
         initUI()
     }
     func initUI(){
-        
  
-        
     //MARK: Init Libreria Collection View ____
         libreriaCollectionView.delegate = self
         libreriaCollectionView.dataSource = self
@@ -179,18 +177,11 @@ class LibreriaViewController : UIViewController {
         buscarLibrosXautor?.layer.borderWidth = 1
         buscarLibrosXautor?.addTarget(self, action: #selector(bookByAutor), for: .touchUpInside)
         view.addSubview(buscarLibrosXautor!)
-        
-        
-//        view.addSubview(counterLabel)
-//        counterLabel.addAnchorsAndSize(width: 30, height: 30, left: nil, top: 5, right: 10, bottom: nil)
-        
+ 
         counterLabel = UILabel(frame: CGRect(x: 355, y: 47, width: 30, height: 30))
         counterLabel?.text = "0"
-        //counterLabel?.textAlignment = .left
-        //counterLabel?.font = UIFont(name: "Helvetica Bold", size: 20)
         counterLabel?.textColor = .black//blueTextColor
         view.addSubview(counterLabel!)
-        
         
         cartCount = UIButton(frame: CGRect(x: 330, y: 70, width: 35, height: 35))
         cartCount?.setImage(UIImage(named: "cart"), for: .normal)

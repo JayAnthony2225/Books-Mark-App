@@ -8,18 +8,18 @@ import UIKit
 
 class ViewController: UIViewController{
     var backImage : UIImageView?
-    var backImage2: UIImageView?
+    var backImage2 = UIImageView()
     var readText : UILabel?
     var bienvenidoLabel : UILabel? // fistlabel
     var correoLabel : UILabel?
     var correoTextField : UITextField?
     var pswLabel : UILabel?
     var pswTextField : UITextField?
-    var iniciarSesion : UIButton?
-    var registrateButton : UIButton?
+    var iniciarSesion = UIButton()
+    var registrateButton = UIButton()
     var showButton : UIButton?
     var userId : UILabel?
-    var sinCuenta : UILabel?
+    var sinCuenta = UILabel()
     var userIdTextField : UITextField?
    // var defaults = UserDefaults.standard
     
@@ -43,13 +43,12 @@ class ViewController: UIViewController{
         backImage?.layer.cornerRadius = 15
         view.addSubview(backImage!)
         
-        //--------------- icon image ---------------     360
-        backImage2 = UIImageView(frame: CGRect(x: 160, y: 90, width: 80, height: 80))
-        backImage2?.image = UIImage(named:"bookIcon")
-        backImage2?.layer.masksToBounds = true
-        backImage2?.contentMode = .scaleAspectFill
-        backImage2?.layer.cornerRadius = 15
-        view.addSubview(backImage2!)
+        view.addSubview(backImage2)
+        backImage2.image = UIImage(named:"bookIcon")
+        backImage2.layer.masksToBounds = true
+        backImage2.contentMode = .scaleAspectFit
+        backImage2.layer.cornerRadius = 15
+        backImage2.addAnchorsAndSize(width: 80, height: 80, left: Dimensions.grid9_2, top: 80, right: Dimensions.grid9_2, bottom: nil, withAnchor: nil, relativeToView: nil)
         
         //--------------- Bienvenido Label---------------  //440
         bienvenidoLabel = UILabel(frame: CGRect(x: 70, y: 180, width: width - 150 , height: 40))
@@ -57,7 +56,7 @@ class ViewController: UIViewController{
         bienvenidoLabel?.backgroundColor = .clear
         bienvenidoLabel?.textColor = .nightBlue
         bienvenidoLabel?.font = UIFont(name: "Arial Bold", size: 28)
-        bienvenidoLabel?.text = " ¡Welcome! "
+        bienvenidoLabel?.text = " Welcome! "
         view.addSubview(bienvenidoLabel!)
         
         //---------------Encabezado USER ID ------------585---
@@ -108,32 +107,32 @@ class ViewController: UIViewController{
         showButton?.addTarget(self, action: #selector(showPsw), for: .touchUpInside)
         view.addSubview(showButton!)
         
-        //--------------- Iniciar Sesion ---------------
-        iniciarSesion = UIButton(frame: CGRect(x: 85, y: 730, width: width - 170, height: 40))
-        iniciarSesion?.backgroundColor = .nightBlue
-        iniciarSesion?.layer.cornerRadius = 15
-        iniciarSesion?.setTitle("LOG IN", for: .normal)
-        iniciarSesion?.layer.borderColor = UIColor.skyBlue.cgColor
-        iniciarSesion?.layer.borderWidth = 1
-        iniciarSesion?.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
-        view.addSubview(iniciarSesion!)
-        //--------------- Registrate    ---------------
-        
-        sinCuenta = UILabel(frame: CGRect(x: 55, y: 775 , width: width - 120, height: 40))
-        sinCuenta?.textAlignment = NSTextAlignment.left
-        sinCuenta?.backgroundColor = .clear
-        sinCuenta?.textColor = .white
-        sinCuenta?.font = UIFont(name: "", size: 17)
-        sinCuenta?.text = "Without An Account Yet?  "
-        view.addSubview(sinCuenta!)
-        
-        registrateButton = UIButton(frame: CGRect(x: 170, y: 775, width: width - 120, height: 40))
-        registrateButton?.backgroundColor = .clear
-        registrateButton?.layer.cornerRadius = 18
-        registrateButton?.setTitle("Sign up here! ", for: .normal)
-        registrateButton?.setTitleColor(.cyan, for: .normal)
-        registrateButton?.addTarget(self, action: #selector(goToRegistro), for: .touchUpInside)
-         view.addSubview(registrateButton!)
+        view.addSubview(iniciarSesion)
+       // iniciarSesion = UIButton(frame: CGRect(x: 85, y: 730, width: width - 170, height: 40))
+        iniciarSesion.backgroundColor = .nightBlue
+        iniciarSesion.layer.cornerRadius = 15
+        iniciarSesion.setTitle("LOG IN", for: .normal)
+        iniciarSesion.layer.borderColor = UIColor.skyBlue.cgColor
+        iniciarSesion.layer.borderWidth = 1
+        iniciarSesion.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
+        iniciarSesion.addAnchorsAndSize(width: nil, height: 40, left: Dimensions.grid8, top: nil, right: Dimensions.grid8, bottom: 100, withAnchor: nil, relativeToView: nil)
+
+        view.addSubview(sinCuenta)
+        //sinCuenta = UILabel(frame: CGRect(x: 55, y: 775 , width: width - 120, height: 40))
+        sinCuenta.textAlignment = NSTextAlignment.left
+        sinCuenta.backgroundColor = .clear
+        sinCuenta.textColor = .white
+        sinCuenta.font = UIFont(name: "", size: 17)
+        sinCuenta.text = "Without An Account Yet?  "
+        sinCuenta.addAnchorsAndSize(width: nil, height: 40, left: Dimensions.grid8, top: nil, right: nil, bottom: 50, withAnchor: nil, relativeToView: nil)
+            
+        view.addSubview(registrateButton)
+        registrateButton.backgroundColor = .clear
+        registrateButton.layer.cornerRadius = 18
+        registrateButton.setTitle("Sign up here! ", for: .normal)
+        registrateButton.setTitleColor(.cyan, for: .normal)
+        registrateButton.addTarget(self, action: #selector(goToRegistro), for: .touchUpInside)
+        registrateButton.addAnchorsAndSize(width: nil, height: 40, left: nil, top: nil, right: Dimensions.grid8, bottom: 50, withAnchor: nil, relativeToView: nil)
     }
     
     @objc func showPsw(){
@@ -149,11 +148,11 @@ class ViewController: UIViewController{
     @objc func goToBooks()
                 {
                     // este codigo es para el cambio de color de los botones
-                    iniciarSesion?.backgroundColor = .cyan//.seaBlue
-                    iniciarSesion?.alpha = 0.5
+                    iniciarSesion.backgroundColor = .cyan//.seaBlue
+                    iniciarSesion.alpha = 0.5
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        self.iniciarSesion?.alpha = 1.0
-                        self.iniciarSesion?.backgroundColor = .nightBlue
+                        self.iniciarSesion.alpha = 1.0
+                        self.iniciarSesion.backgroundColor = .nightBlue
                     }
                     
     //este codigo es para tener un acceso rapido para probar sin logear a cada rato
@@ -259,11 +258,11 @@ class ViewController: UIViewController{
 //MARK: Objeto- Funcion - Registro
         @objc func goToRegistro(){
            //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar
-            registrateButton?.backgroundColor = .seaBlue
-            registrateButton?.alpha = 0.5
+            registrateButton.backgroundColor = .seaBlue
+            registrateButton.alpha = 0.5
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.registrateButton?.alpha = 1.0
-                self.registrateButton?.backgroundColor = (.clear)
+                self.registrateButton.alpha = 1.0
+                self.registrateButton.backgroundColor = (.clear)
             }
             print("Boton Registro presionado")
             let registroOption = RegistroViewController()

@@ -38,32 +38,21 @@ class ProfileViewController: UIViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-        
             view.backgroundColor = .nightBlue// pantalla de detalle
-          
             initUI()
             chargeUser()
         }
         
     func chargeUser(){
         if UserDefaults.standard.string(forKey: "User") == "Mark-Anthony"{
-            
             createProductView()
-            
         } else{
 //            carga info default
             createProductDefault()
         }
-            
-        
     }
-    
         func initUI(){
-            
-           // createProductView()
-          //  createDescription()
-          //  autorDescription()
-            
+
             topImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/6))
             topImageView?.image = UIImage(named:"backImage11")
             topImageView?.layer.masksToBounds = true
@@ -151,10 +140,7 @@ class ProfileViewController: UIViewController {
             bottomImageView?.layer.cornerRadius = 15
             view.addSubview(bottomImageView!)
         }
-    
-    
     func createProductDefault(){
-        
         niceToLabel = UILabel(frame: CGRect(x: 10, y: 80, width: width - 20, height: 200))
         niceToLabel?.text = "Welcome!."
         niceToLabel?.textColor = .white
