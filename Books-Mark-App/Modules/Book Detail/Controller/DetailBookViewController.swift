@@ -69,13 +69,6 @@ class DetailBookViewController: UIViewController {
         tituloLabel?.font = UIFont(name: "Helvetica Bold", size: 30)
         view.addSubview(tituloLabel!)
 
-//        backText = UILabel(frame: CGRect(x: 37, y: 30, width: 100, height: 50))
-//        backText?.text = "Regresar"
-//        backText?.textColor = darkBlueTextColor
-//        backText?.font = UIFont(name: "Helvetica Bold", size: 20)
-//        view.addSubview(backText!)
-//
-       
     }
 
     func createProductView(){
@@ -91,14 +84,10 @@ class DetailBookViewController: UIViewController {
         contenedorText?.layer.cornerRadius = 10
         productContentView?.addSubview(contenedorText!)
         
-        
         libroImage = UIImageView (frame: CGRect(x: 215, y: 30, width: 130, height: 150))
         libroImage?.image = UIImage(named: libro?.portadaImage ?? "")
         libroImage?.contentMode = .scaleAspectFill
-        //libroImage?.layer.cornerRadius = 5
-        //libroImage?.layer.masksToBounds = true // esto es para los bordes y que se ajuste la imagen
         productContentView?.addSubview(libroImage!)
-       
         
         autorLabel = UILabel(frame: CGRect(x: 20, y: 75, width: 200, height: 100))
         autorLabel?.text = libro?.autor ?? ""
@@ -112,8 +101,8 @@ class DetailBookViewController: UIViewController {
         categoriaLabel?.textColor = blueTextColor
         productContentView?.addSubview(categoriaLabel!)
         
-        precioLabel = UILabel(frame: CGRect(x: 20, y: 125, width: 100, height: 50))
-        precioLabel?.text = "Preio:\n$\(String(describing: libro?.precio ?? 0))0MX"
+        precioLabel = UILabel(frame: CGRect(x: 20, y: 145, width: 100, height: 50))
+        precioLabel?.text = "Preio:\n$\(String(describing: libro?.precio ?? 0))0MX" 
         precioLabel?.font = UIFont(name: "Helvetica Bold", size: 16)
         precioLabel?.textColor = lightBTextColor
         productContentView?.addSubview(precioLabel!)
@@ -160,15 +149,6 @@ class DetailBookViewController: UIViewController {
         descripLabel?.adjustsFontSizeToFitWidth = true
         descripLabel?.font = UIFont(name: "Arial Bold", size: 26)
         descriptionView?.addSubview(descripLabel!)
-//
-//        descripcionButton = UIButton(frame: CGRect(x: 20, y: 15, width: width/3, height: 50))
-//        descripcionButton?.setTitle("Descripción", for: .normal)
-//        descripcionButton?.backgroundColor = darkBlueTextColor
-//        descripcionButton?.layer.borderColor = UIColor.white.cgColor
-//        descripcionButton?.layer.cornerRadius = 10
-//        descripcionButton?.layer.borderWidth = 1
-//        descriptionView?.addSubview(descripcionButton!)
-//
     }
     
     func autorDescription(){
@@ -200,8 +180,6 @@ class DetailBookViewController: UIViewController {
         autorFoto = UIImageView (frame: CGRect(x: 0, y: 20, width: 110, height: 150))
         autorFoto?.image = UIImage(named: libro?.autorFoto ?? "")
         autorFoto?.contentMode = .scaleAspectFill
-        //libroImage?.layer.cornerRadius = 5
-        //libroImage?.layer.masksToBounds = true // esto es para los bordes y que se ajuste la imagen
         autorView?.addSubview(autorFoto!)
     }
 
