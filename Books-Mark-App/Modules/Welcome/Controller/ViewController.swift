@@ -65,18 +65,41 @@ class ViewController: UIViewController{
         userId?.layer.cornerRadius = 2
         userId?.layer.borderColor = UIColor.white.cgColor
         userId?.layer.borderWidth = 0
-        userId?.text = "User ID"
+        userId?.text = "Email"
         view.addSubview(userId!)
         
-        userIdTextField = UITextField(frame: CGRect(x: 30, y: 305 + 20, width: width - 60, height: 40))
-        userIdTextField?.textAlignment = NSTextAlignment.center
-        userIdTextField?.placeholder = "User ID   "
-        userIdTextField?.backgroundColor = .white
-        userIdTextField?.layer.cornerRadius = 5
-        userIdTextField?.layer.borderColor = UIColor.white.cgColor
-        userIdTextField?.layer.borderWidth = 3
-        view.addSubview(userIdTextField!)
-    
+//        correoTextField = UILabel(frame: CGRect(x: 35, y: 285 + 20, width: 150 , height: 15))
+//        correoTextField?.textAlignment = NSTextAlignment.left
+//        correoTextField?.backgroundColor = .clear
+//        correoTextField?.textColor = .nightBlue
+//        correoTextField?.font = UIFont(name: "Arial Bold", size: 15)
+//        correoTextField?.layer.cornerRadius = 2
+//        correoTextField?.layer.borderColor = UIColor.white.cgColor
+//        correoTextField?.layer.borderWidth = 0
+//        correoTextField?.text = "User ID"
+//        view.addSubview(correoTextField!)
+//
+        
+        correoTextField = UITextField(frame: CGRect(x: 30, y: 305 + 20, width: width - 60, height: 40))
+        correoTextField?.textAlignment = NSTextAlignment.center
+        correoTextField?.placeholder = "User ID   "
+        correoTextField?.backgroundColor = .white
+        correoTextField?.layer.cornerRadius = 5
+        correoTextField?.layer.borderColor = UIColor.white.cgColor
+        correoTextField?.layer.borderWidth = 3
+                view.addSubview(correoTextField!)
+
+//        correoTextField
+        
+//        userIdTextField = UITextField(frame: CGRect(x: 30, y: 305 + 20, width: width - 60, height: 40))
+//        userIdTextField?.textAlignment = NSTextAlignment.center
+//        userIdTextField?.placeholder = "User ID   "
+//        userIdTextField?.backgroundColor = .white
+//        userIdTextField?.layer.cornerRadius = 5
+//        userIdTextField?.layer.borderColor = UIColor.white.cgColor
+//        userIdTextField?.layer.borderWidth = 3
+//        view.addSubview(userIdTextField!)
+//
         pswLabel = UILabel(frame: CGRect(x: 35, y: 350 + 20, width: width/5 , height: 15))
         pswLabel?.textAlignment = NSTextAlignment.left
         pswLabel?.backgroundColor = .clear
@@ -148,53 +171,11 @@ class ViewController: UIViewController{
                     }
                     
     //este codigo es para tener un acceso rapido para probar sin logear a cada rato
-               print("Ingresando a libreria View")
- //MARK: TAB BAR Setting
-                    
-///----------- esta porcion de codigo es solo para hacer pruebas con el userDefaults
-                var userSet = ""
-                    if let user = userIdTextField?.text{
-                        if user != ""{
-                            userSet = user
-                            print(user)
-                           // defaults.set(user, forKey: "User") // Aqui guardamos el string user en Userdefaults
-                            UserDefaults.standard.set(userSet, forKey: "User")
-                        }
-                    //defaults.set(userSet, forKey: "User") // Aqui guardamos el string user en Userdefaults
-                       
-                    }
-////-------------- hasta aqui lo usare para hacer pruebas del user defaults
-               let tabBarViewController = UITabBarController()  // Codigo para TAB BAR
-                    
-                let libreriaOption = LibreriaViewController()
-                let searchOption = SearchViewController()
-                let profileOption = ProfileViewController()
-                    
-                    libreriaOption.title = "Home"
-                    searchOption.title = "Search"
-                    profileOption.title = "User"
-                    
-                tabBarViewController.setViewControllers([libreriaOption, searchOption, profileOption], animated: true)
-                    guard let items = tabBarViewController.tabBar.items else {
-                        return
-                    }
-                    let images = ["house", "magnifyingglass", "person.circle"]
-                    for x in 0..<items.count {
-                        items[2].badgeValue = "3"
-                        items[x].image = UIImage(systemName: images[x])
-                    }
-                    tabBarViewController.modalPresentationStyle = .fullScreen
-                    present(tabBarViewController, animated: true)
-                    //libreriaOption.modalPresentationStyle = .fullScreen
-                    //present(libreriaOption, animated: true,completion:
-                  //  {
-                   print("Presentando Tab bar y Views")
-                   //})
-                    
-                    }
+               
+ 
     
     ///________
-/*
+
         var correoVar = ""
         var alertText = ""
         var passwordVar = " "
@@ -211,7 +192,12 @@ class ViewController: UIViewController{
                 }
                     else{
                         print("Ingresa un correo valido porfavor")
-                        alertText = "Ingresar un correo valido alert"}
+                        alertText = "Formato de correo No Valido"}
+//
+//                        let alert = UIAlertController(title: "Error de datos", message: alertText, preferredStyle: .alert)
+//                        alert.addAction(UIAlertAction(title: "OK entendido. ", style: .default, handler: nil))
+//                        self.present(alert,animated: true,completion: nil)
+                    
         }
                 if let password = pswTextField?.text{
                 passwordVar = String(password)
@@ -223,21 +209,64 @@ class ViewController: UIViewController{
                     }
                 else{
                 print("Este psw es incorrecto")
-                alertText = "La informacion es incorrecta"}
+                alertText = "Password incorrecto"}
         }
             
                 if alertText.isEmpty
                     {
-                   
-                        print("Ingresando a libreria View")
-                        let libreriaOption = LibreriaViewController()
-                        libreriaOption.modalPresentationStyle = .fullScreen
-                        present(libreriaOption, animated: true,completion:
-                            {
-                            print("Presentando View de libreria")
-                           
-                            })
-                    }
+//
+//                        print("Ingresando a libreria View")
+//                        let libreriaOption = LibreriaViewController()
+//                        libreriaOption.modalPresentationStyle = .fullScreen
+//                        present(libreriaOption, animated: true,completion:
+//                            {
+//                            print("Presentando View de libreria")
+//
+//                            })
+//                    }
+                    //MARK: TAB BAR Setting
+                                       
+                   ///----------- esta porcion de codigo es solo para hacer pruebas con el userDefaults
+                                   var userSet = ""
+                                       if let user = correoTextField?.text{
+                                           if user != ""{
+                                               userSet = user
+                                               print(user)
+                                              // defaults.set(user, forKey: "User") // Aqui guardamos el string user en Userdefaults
+                                               UserDefaults.standard.set(userSet, forKey: "User")
+                                           }
+                                       //defaults.set(userSet, forKey: "User") // Aqui guardamos el string user en Userdefaults
+                                          
+                                       }
+                   ////-------------- hasta aqui lo usare para hacer pruebas del user defaults
+                                  let tabBarViewController = UITabBarController()  // Codigo para TAB BAR
+                                       
+                                   let libreriaOption = LibreriaViewController()
+                                   let searchOption = SearchViewController()
+                                   let profileOption = ProfileViewController()
+                                       
+                                       libreriaOption.title = "Home"
+                                       searchOption.title = "Search"
+                                       profileOption.title = "User"
+                                       
+                                   tabBarViewController.setViewControllers([libreriaOption, searchOption, profileOption], animated: true)
+                                       guard let items = tabBarViewController.tabBar.items else {
+                                           return
+                                       }
+                                       let images = ["house", "magnifyingglass", "person.circle"]
+                                       for x in 0..<items.count {
+                                           items[2].badgeValue = "3"
+                                           items[x].image = UIImage(systemName: images[x])
+                                       }
+                                       tabBarViewController.modalPresentationStyle = .fullScreen
+                                       present(tabBarViewController, animated: true)
+                                       //libreriaOption.modalPresentationStyle = .fullScreen
+                                       //present(libreriaOption, animated: true,completion:
+                                     //  {
+                                      print("Presentando Tab bar y Views")
+                                      //})
+                                       
+                                       }
                 else
                     {
                     let alert = UIAlertController(title: "Error de datos", message: alertText, preferredStyle: .alert)
@@ -246,7 +275,7 @@ class ViewController: UIViewController{
                     }
                 }
 
-*/
+
 //MARK: Objeto- Funcion - Registro
         @objc func goToRegistro(){
            //Esta funcion cambia el alpha del color y va al principio para que haga el efecto de cambiar al precionar

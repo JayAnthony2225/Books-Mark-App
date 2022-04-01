@@ -92,10 +92,10 @@ class LibreriaViewController : UIViewController {
         holaLabel?.textColor = .seaBlue
         view.addSubview(holaLabel!)
         
-        nombreLabel =  UILabel(frame: CGRect(x: 35, y: 45, width: width/2, height: height/8))
+        nombreLabel =  UILabel(frame: CGRect(x: 35, y: 45, width: width, height: height/8))
         nombreLabel?.backgroundColor = .clear
         nombreLabel?.text = UserDefaults.standard.string(forKey: "User") //"Marco!"
-        nombreLabel?.font = UIFont(name: "Helvetica Bold", size: 28)
+        nombreLabel?.font = UIFont(name: "Helvetica Bold", size: 22)
         nombreLabel?.textColor = .nightBlue
         view.addSubview(nombreLabel!)
         

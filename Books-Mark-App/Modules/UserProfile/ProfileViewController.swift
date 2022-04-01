@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
         }
         
     func chargeUser(){
-        if UserDefaults.standard.string(forKey: "User") == "Mark-Anthony"{
+        if UserDefaults.standard.string(forKey: "User") == "Mark-Anthony@gmail.com"{
             createProductView()
         } else{
 //            carga info default
@@ -102,10 +102,10 @@ class ProfileViewController: UIViewController {
             tiraImagenes?.layer.cornerRadius = 10
             view.addSubview(tiraImagenes!)
 //Persistencia de datos USer
-            tituloLabel = UILabel(frame: CGRect(x: 130, y: 175, width: 250, height: 100))
+            tituloLabel = UILabel(frame: CGRect(x: 50, y: 175, width: 350, height: 80))
             tituloLabel?.text = UserDefaults.standard.string(forKey: "User")//"Marco A. Cruz "
             tituloLabel?.textColor = .systemRed
-            tituloLabel?.font = UIFont(name: "Arial Bold", size: 30)
+            tituloLabel?.font = UIFont(name: "Arial", size: 16)
             view.addSubview(tituloLabel!)
             
             autorLabel = UILabel(frame: CGRect(x: 190, y: 228, width: 250, height: 100))
@@ -142,7 +142,7 @@ class ProfileViewController: UIViewController {
         }
     func createProductDefault(){
         niceToLabel = UILabel(frame: CGRect(x: 10, y: 80, width: width - 20, height: 200))
-        niceToLabel?.text = "Welcome!."
+        niceToLabel?.text = "Welcome!"
         niceToLabel?.textColor = .white
         niceToLabel?.numberOfLines = 5
         niceToLabel?.adjustsFontSizeToFitWidth = true
@@ -167,10 +167,10 @@ class ProfileViewController: UIViewController {
         tiraImagenes?.layer.cornerRadius = 10
         view.addSubview(tiraImagenes!)
 //Persistencia de datos USer
-        tituloLabel = UILabel(frame: CGRect(x: 130, y: 175, width: 250, height: 100))
+        tituloLabel = UILabel(frame: CGRect(x: 100, y: 175, width: 300, height: 100))
         tituloLabel?.text = UserDefaults.standard.string(forKey: "User")//"Marco A. Cruz "
         tituloLabel?.textColor = .systemRed
-        tituloLabel?.font = UIFont(name: "Arial Bold", size: 30)
+        tituloLabel?.font = UIFont(name: "Arial Bold", size: 24)
         view.addSubview(tituloLabel!)
         
         autorLabel = UILabel(frame: CGRect(x: 190, y: 228, width: 250, height: 100))
