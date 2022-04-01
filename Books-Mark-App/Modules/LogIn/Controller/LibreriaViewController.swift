@@ -150,19 +150,21 @@ class LibreriaViewController : UIViewController {
         
         //Search  Buttons
         buscarAutor1 = UIButton(frame: CGRect(x: 10, y: 420, width: width / 4, height: 30))
-        buscarAutor1?.backgroundColor = .nightBlue
+        buscarAutor1?.backgroundColor = .white
+        buscarAutor1?.setTitleColor(.nightBlue, for: .normal)
         buscarAutor1?.layer.cornerRadius = 10
         buscarAutor1?.setTitle("Authors", for: .normal)
-        buscarAutor1?.layer.borderColor = UIColor.white.cgColor
+        buscarAutor1?.layer.borderColor = UIColor.nightBlue.cgColor
         buscarAutor1?.layer.borderWidth = 1
         buscarAutor1?.addTarget(self, action: #selector(autorFinder), for: .touchUpInside)
         view.addSubview(buscarAutor1!)
         
         buscarCategoria = UIButton(frame: CGRect(x: 118, y: 420, width: width / 3, height: 30))
-        buscarCategoria?.backgroundColor = .nightBlue
+        buscarCategoria?.backgroundColor = .white
+        buscarCategoria?.setTitleColor(.nightBlue, for: .normal)
         buscarCategoria?.layer.cornerRadius = 10
         buscarCategoria?.setTitle("By Category", for: .normal)
-        buscarCategoria?.layer.borderColor = UIColor.white.cgColor
+        buscarCategoria?.layer.borderColor = UIColor.nightBlue.cgColor
         buscarCategoria?.layer.borderWidth = 1
         buscarCategoria?.addTarget(self, action: #selector(categoryFinder), for: .touchUpInside)
         view.addSubview(buscarCategoria!)
@@ -223,7 +225,7 @@ class LibreriaViewController : UIViewController {
         buscarAutor1?.alpha = 0.5
          DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
              self.buscarAutor1?.alpha = 1.0
-             self.buscarAutor1?.backgroundColor = .nightBlue
+             self.buscarAutor1?.backgroundColor = .white
          }
             print("presentando buscador de autor View")
             let libreriaOption = AutorController()
@@ -238,7 +240,7 @@ class LibreriaViewController : UIViewController {
         buscarAutor1?.alpha = 0.5
          DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
              self.buscarAutor1?.alpha = 1.0
-             self.buscarAutor1?.backgroundColor = .nightBlue
+             self.buscarAutor1?.backgroundColor = .white
          }
             print("presentando buscador de autor View")
             let libreriaOption = obrasViewController()
@@ -254,7 +256,7 @@ class LibreriaViewController : UIViewController {
         buscarCategoria?.alpha = 0.5
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
         self.buscarCategoria?.alpha = 1.0
-        self.buscarCategoria?.backgroundColor = .nightBlue
+        self.buscarCategoria?.backgroundColor = .white
                 }
                 print("presentando otro View")
                 let libreriaOption = planetasViewController()

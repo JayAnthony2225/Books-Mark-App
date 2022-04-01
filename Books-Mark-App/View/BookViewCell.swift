@@ -12,7 +12,6 @@ protocol MenuTableViewCellDelegate{
     func lessToCard(product : Libro, count : Int)
 }
 
-    
 class bookTableViewCell : UITableViewCell{
     var contenidoPropio : UIView?
     var nombreLibro :  UILabel?
@@ -24,17 +23,15 @@ class bookTableViewCell : UITableViewCell{
     var iconRated : UIImageView?
     var icon2 : UIImageView?
     var book1 : Libro?
-//    var libro : Libro?
-    
     var delegate : MenuTableViewCellDelegate?
-    var lessButton: UIButton?
-    var addButton : UIButton?
+    var lessButton = UIButton()
+    var addButton = UIButton()
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
     var count = 0
-    var counterLabel : UILabel?
+    var counterLabel = UILabel()
     
     init (book : Libro, numberOf : Int){
         super.init(style: .default, reuseIdentifier: nil)
@@ -71,75 +68,47 @@ class bookTableViewCell : UITableViewCell{
         libroImage?.contentMode = .scaleAspectFill
         libroImage?.layer.cornerRadius = 5
         contenidoPropio?.addSubview(libroImage!)
-//
-//        icon2 = UIImageView (frame: CGRect(x: 300, y: 57, width: 35, height: 35))
-//        icon2?.image = UIImage(named: "go")
-//        icon2?.contentMode = .scaleAspectFill
-//        icon2?.layer.cornerRadius = 5
-//        contenidoPropio?.addSubview(icon2!)
-        
+    
         iconRated = UIImageView (frame: CGRect(x: 0, y: -22, width: 40, height: 40))
         iconRated?.image = UIImage(named: book1?.rate ?? "")
         iconRated?.contentMode = .scaleAspectFill
         iconRated?.layer.cornerRadius = 5
         contenidoPropio?.addSubview(iconRated!)
         
+        contenidoPropio?.addSubview(addButton)
+        addButton.backgroundColor = .clear
+        addButton.setImage(UIImage(named: "addBag"), for: .normal)
+        addButton.addTarget(self, action: #selector(addProduct), for: .touchUpInside)
+        addButton.addAnchorsAndSize(width: 30, height: 30, left: nil, top: Dimensions.grid8_1, right: Dimensions.grid4, bottom: 100, withAnchor: nil, relativeToView: nil)
         
-        addButton = UIButton(frame: CGRect(x: 190 + 145, y: 50, width: 30, height: 30)) //-45
-        addButton?.backgroundColor = .clear
-//        addButton?.setTitle("+", for: .normal)
-//        addButton?.setTitleColor(.black, for: .normal) // Modificamos el color del titulo del boton
-//        addButton?.layer.borderColor = UIColor.green.cgColor
-//        addButton?.layer.borderWidth = 1 // Aqui definimos el ancho del borde
-//        addButton?.layer.cornerRadius = 10
-        addButton?.setImage(UIImage(named: "addBag"), for: .normal)
-        addButton?.addTarget(self, action: #selector(addProduct), for: .touchUpInside)
-        contenidoPropio?.addSubview(addButton!)
+        contenidoPropio?.addSubview(lessButton)
+        lessButton.backgroundColor = .clear
+        lessButton.setImage(UIImage(named: "trash"), for: .normal)
+        lessButton.addTarget(self, action: #selector(lessProduct), for: .touchUpInside)
+        lessButton.addAnchorsAndSize(width: 30, height: 30, left: nil, top: Dimensions.grid8_1, right: Dimensions.grid8_2, bottom: 100, withAnchor: nil, relativeToView: nil)
         
-        lessButton = UIButton(frame: CGRect(x: 130 + 145, y: 50, width: 30, height: 30)) //-45
-        lessButton?.backgroundColor = .clear
-        //lessButton?.setTitle("-", for: .normal)
-        //lessButton?.setTitleColor(.black, for: .normal) // Modificamos el color del titulo del boton
-        //lessButton?.layer.borderColor = UIColor.red.cgColor
-        //lessButton?.layer.borderWidth = 1 // Aqui definimos el ancho del borde
-        //lessButton?.layer.cornerRadius = 10
-        lessButton?.setImage(UIImage(named: "trash"), for: .normal)
-        lessButton?.addTarget(self, action: #selector(lessProduct), for: .touchUpInside)
-        contenidoPropio?.addSubview(lessButton!)
-        
-        //counterLabel = UILabel(frame: CGRect(x: 190 + 145, y: 40, width: 20, height: 20))
-//        contenidoPropio?.addSubview(counterLabel)
-//       counterLabel.addAnchorsAndSize(width: 20, height: 20, left: 5, top: nil, right: nil, bottom: 10, withAnchor: .left, relativeToView: addButton)
-//
-        counterLabel = UILabel(frame: CGRect(x: 195 + 157, y: 28, width: 30, height: 30))
-        counterLabel?.text = "0"
-        //counterLabel?.textAlignment = .left
-        //counterLabel?.font = UIFont(name: "Helvetica Bold", size: 20)
-        counterLabel?.textColor = .black//blueTextColor
-        contenidoPropio?.addSubview(counterLabel!)
+        contenidoPropio?.addSubview(counterLabel)
+        counterLabel.text = "0"
+        counterLabel.textColor = .black//blueTextColor
+        counterLabel.addAnchorsAndSize(width: 30, height: 30, left: nil, top: Dimensions.grid5, right: 32, bottom: 100, withAnchor: nil, relativeToView: nil)
         
     }
-    
-    
-
     @objc func addProduct(){
         print("ADD \(book1?.tituloLibro)")
         if count < 10{
         count += 1
-        counterLabel?.text = "\(count)"
+        counterLabel.text = "\(count)"
         print(count)
             delegate?.addToCard(product: book1!, count: count)
     }  else {
         print("fuera de inventario chavo 🥲")
     }
     }
-
-
     @objc func lessProduct(){
         print("LESS \(book1?.tituloLibro)")
         if count > 0 {
         count -= 1
-        counterLabel?.text = "\(count)"
+        counterLabel.text = "\(count)"
         print(count)
         delegate?.lessToCard(product: book1!, count: count)
         }
@@ -147,8 +116,6 @@ class bookTableViewCell : UITableViewCell{
             print("operacion invalida")
         }
     }
-
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has no been implemented")
     }
