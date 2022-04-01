@@ -169,7 +169,7 @@ class LibreriaViewController : UIViewController {
         buscarCategoria?.addTarget(self, action: #selector(categoryFinder), for: .touchUpInside)
         view.addSubview(buscarCategoria!)
         
-        buscarLibrosXautor = UIButton(frame: CGRect(x: 260, y: 420, width: width / 3, height: 30))
+        buscarLibrosXautor = UIButton(frame: CGRect(x: 260, y: 420, width: width / 3 - 10, height: 30))
         buscarLibrosXautor?.backgroundColor = .white
         buscarLibrosXautor?.setTitleColor(.nightBlue, for: .normal)
         buscarLibrosXautor?.layer.cornerRadius = 10
