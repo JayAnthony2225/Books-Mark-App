@@ -33,23 +33,14 @@ class bookTableViewCell : UITableViewCell{
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
-    
-   // var producto : Producto?
     var count = 0
     var counterLabel : UILabel?
-//
-//    var counterLabel : UILabel = {
-//       let label = UILabel()
-//        label.text = "0"
-//        label.backgroundColor = .red
-//        return label
-//    }()
     
     init (book : Libro, numberOf : Int){
         super.init(style: .default, reuseIdentifier: nil)
         self.book1 = book
         self.count = numberOf
-        self.backgroundColor = .nightBlue
+        self.backgroundColor = .white
         initUI()
     }
     func initUI(){

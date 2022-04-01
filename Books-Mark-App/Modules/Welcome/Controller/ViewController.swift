@@ -35,7 +35,6 @@ class ViewController: UIViewController{
         initUI()
         }
     func initUI(){
-        //--------------- book background -------10--------           width - 20       670 -800
         backImage = UIImageView(frame: CGRect(x: 0, y: 0, width: width , height: height))
         backImage?.image = UIImage(named:"backImage9")
         backImage?.layer.masksToBounds = true
@@ -49,8 +48,7 @@ class ViewController: UIViewController{
         backImage2.contentMode = .scaleAspectFit
         backImage2.layer.cornerRadius = 15
         backImage2.addAnchorsAndSize(width: 80, height: 80, left: Dimensions.grid9_2, top: 80, right: Dimensions.grid9_2, bottom: nil, withAnchor: nil, relativeToView: nil)
-        
-        //--------------- Bienvenido Label---------------  //440
+      
         bienvenidoLabel = UILabel(frame: CGRect(x: 70, y: 180, width: width - 150 , height: 40))
         bienvenidoLabel?.textAlignment = NSTextAlignment.center
         bienvenidoLabel?.backgroundColor = .clear
@@ -59,7 +57,6 @@ class ViewController: UIViewController{
         bienvenidoLabel?.text = " Welcome! "
         view.addSubview(bienvenidoLabel!)
         
-        //---------------Encabezado USER ID ------------585---
         userId = UILabel(frame: CGRect(x: 35, y: 285 + 20, width: 150 , height: 15))
         userId?.textAlignment = NSTextAlignment.left
         userId?.backgroundColor = .clear
@@ -79,7 +76,7 @@ class ViewController: UIViewController{
         userIdTextField?.layer.borderColor = UIColor.white.cgColor
         userIdTextField?.layer.borderWidth = 3
         view.addSubview(userIdTextField!)
-      //---------------Encabezado password ---------650------
+    
         pswLabel = UILabel(frame: CGRect(x: 35, y: 350 + 20, width: width/5 , height: 15))
         pswLabel?.textAlignment = NSTextAlignment.left
         pswLabel?.backgroundColor = .clear
@@ -90,7 +87,7 @@ class ViewController: UIViewController{
         pswLabel?.layer.borderWidth = 0
         pswLabel?.text = "Password "
         view.addSubview(pswLabel!)
-        //--------------- Password ---------------         670
+     
         pswTextField = UITextField(frame: CGRect(x: 30, y: 370 + 20, width: width - 60, height: 40))
         pswTextField?.placeholder = "*************** "
         pswTextField?.isSecureTextEntry = true
@@ -99,7 +96,6 @@ class ViewController: UIViewController{
         pswTextField?.layer.cornerRadius = 5
         pswTextField?.layer.borderColor = UIColor.white.cgColor
         pswTextField?.layer.borderWidth = 3
-        //pswTextField?.keyboardType = .default
         view.addSubview(pswTextField!)
 
         showButton = UIButton(frame: CGRect(x: 325, y: 375 + 20 , width: 25, height: 25))
@@ -108,7 +104,6 @@ class ViewController: UIViewController{
         view.addSubview(showButton!)
         
         view.addSubview(iniciarSesion)
-       // iniciarSesion = UIButton(frame: CGRect(x: 85, y: 730, width: width - 170, height: 40))
         iniciarSesion.backgroundColor = .nightBlue
         iniciarSesion.layer.cornerRadius = 15
         iniciarSesion.setTitle("LOG IN", for: .normal)
@@ -118,7 +113,6 @@ class ViewController: UIViewController{
         iniciarSesion.addAnchorsAndSize(width: nil, height: 40, left: Dimensions.grid8, top: nil, right: Dimensions.grid8, bottom: 100, withAnchor: nil, relativeToView: nil)
 
         view.addSubview(sinCuenta)
-        //sinCuenta = UILabel(frame: CGRect(x: 55, y: 775 , width: width - 120, height: 40))
         sinCuenta.textAlignment = NSTextAlignment.left
         sinCuenta.backgroundColor = .clear
         sinCuenta.textColor = .white
@@ -138,13 +132,11 @@ class ViewController: UIViewController{
     @objc func showPsw(){
         pswTextField?.isSecureTextEntry.toggle()
     }
-    
     // aqui intento hacer que mi teclado se esconda cuando termino de editar el texto
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true) }
     
 //MARK:  Funcion -  Go to Books
-    
     @objc func goToBooks()
                 {
                     // este codigo es para el cambio de color de los botones

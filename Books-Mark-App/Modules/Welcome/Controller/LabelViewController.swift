@@ -19,7 +19,6 @@ class LabelViewController: UIViewController {
             label.text = text
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let label = UILabel()

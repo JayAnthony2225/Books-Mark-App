@@ -36,7 +36,6 @@ class LibreriaViewController : UIViewController {
     var height = UIScreen.main.bounds.height
     
     var cart = [String:Any]()
-  // NUEVA VARIABLE
     var libreriaCollectionView : UICollectionView = {
                             let bookLayout = UICollectionViewFlowLayout()
                             bookLayout.scrollDirection = .horizontal
@@ -46,7 +45,7 @@ class LibreriaViewController : UIViewController {
                             collection.register(BooksCollectionCell.self, forCellWithReuseIdentifier: "bookcell")
                             collection.isPagingEnabled = true
                             collection.translatesAutoresizingMaskIntoConstraints = false
-                            collection.backgroundColor = .clear // esto es el frame de el collection , .RED
+                            collection.backgroundColor = .white//.clear // esto es el frame de el collection , .RED
                             collection.showsVerticalScrollIndicator = true
                             collection.showsHorizontalScrollIndicator = true
                             return collection
@@ -61,7 +60,7 @@ class LibreriaViewController : UIViewController {
 //    }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .nightBlue
+        view.backgroundColor = .white//.nightBlue
         getData()
         initUI()
     }
@@ -71,16 +70,15 @@ class LibreriaViewController : UIViewController {
         libreriaCollectionView.delegate = self
         libreriaCollectionView.dataSource = self
         view.addSubview(libreriaCollectionView)
-        //libreriaCollectionView.addAnchorsWithMargin(20)                   //4                    //150                200
         libreriaCollectionView.addAnchorsAndSize(width: width , height: height / 7, left: 10, top: 170, right: 10, bottom: 50)
     //MARK: Init Elementos de vista         ____
-        bookTableView = UITableView(frame: CGRect(x: 10, y: 480, width: width - 20, height: height/2))
-        bookTableView?.backgroundColor = .nightBlue
+        bookTableView = UITableView(frame: CGRect(x: 10, y: 450, width: width - 20, height: height/2))
+        bookTableView?.backgroundColor = .white//.nightBlue
         bookTableView?.delegate = self
         bookTableView?.dataSource = self
         view.addSubview(bookTableView!)
                                                         //x 0 , y 0                         // 8
-        backgroundBook = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/7))
+        backgroundBook = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/6))
         backgroundBook?.image = UIImage(named:"backImage1")
         backgroundBook?.layer.masksToBounds = true
         backgroundBook?.contentMode = .scaleAspectFill
@@ -119,7 +117,7 @@ class LibreriaViewController : UIViewController {
         view.addSubview(masPolular!)
         
         //MARK: Buscar por  Label and View                                                        // 16
-        findBook = UIImageView (frame: CGRect(x: 10, y: 370,  width: width - 20, height: height/22))
+        findBook = UIImageView (frame: CGRect(x: 10, y: 360,  width: width - 20, height: height/22))
         findBook?.backgroundColor = .black
         findBook?.image = UIImage(named: "backImage1")//aqui le asigno la imagen segun sea el nombre en assets
         findBook?.contentMode = .scaleAspectFill // para hacer que encaje la imagen en el image box
@@ -127,7 +125,7 @@ class LibreriaViewController : UIViewController {
         findBook?.layer.cornerRadius = 10
         view.addSubview(findBook!)
                 
-        findLabel =  UILabel(frame: CGRect(x: 35, y: 370, width: 200, height: 40))
+        findLabel =  UILabel(frame: CGRect(x: 35, y: 360, width: 200, height: 40))
         findLabel?.backgroundColor = .clear
         findLabel?.text = "Search:"
         findLabel?.font = UIFont(name: "Helvetica Bold", size: 19)
@@ -135,7 +133,7 @@ class LibreriaViewController : UIViewController {
         view.addSubview(findLabel!)
         
  //MARK: Recomendados Label and Back Image                                                         // was 16
-        collectionBook2 = UIImageView (frame: CGRect(x: 10, y: 475, width: width - 20, height: height/22))
+        collectionBook2 = UIImageView (frame: CGRect(x: 10, y: height/2 + 40, width: width - 20, height: height/22))
         collectionBook2?.backgroundColor = .black
         collectionBook2?.image = UIImage(named: "backImage2")//aqui le asigno la imagen segun sea el nombre en assets
         collectionBook2?.contentMode = .scaleAspectFill // para hacer que encaje la imagen en el image box
@@ -143,7 +141,7 @@ class LibreriaViewController : UIViewController {
         collectionBook2?.layer.cornerRadius = 10
         view.addSubview(collectionBook2!)
             
-        recomendados =  UILabel(frame: CGRect(x: 35, y: 477, width: 200, height: 40))
+        recomendados =  UILabel(frame: CGRect(x: 35, y: height/2 + 40, width: 200, height: 40))
         recomendados?.backgroundColor = .clear
         recomendados?.text = "Hack your life: "
         recomendados?.font = UIFont(name: "Helvetica Bold", size: 19)
@@ -170,10 +168,11 @@ class LibreriaViewController : UIViewController {
         view.addSubview(buscarCategoria!)
         
         buscarLibrosXautor = UIButton(frame: CGRect(x: 260, y: 420, width: width / 3, height: 30))
-        buscarLibrosXautor?.backgroundColor = .nightBlue
+        buscarLibrosXautor?.backgroundColor = .white
+        buscarLibrosXautor?.setTitleColor(.nightBlue, for: .normal)
         buscarLibrosXautor?.layer.cornerRadius = 10
         buscarLibrosXautor?.setTitle("By Author ID", for: .normal)
-        buscarLibrosXautor?.layer.borderColor = UIColor.white.cgColor
+        buscarLibrosXautor?.layer.borderColor = UIColor.nightBlue.cgColor
         buscarLibrosXautor?.layer.borderWidth = 1
         buscarLibrosXautor?.addTarget(self, action: #selector(bookByAutor), for: .touchUpInside)
         view.addSubview(buscarLibrosXautor!)
@@ -185,7 +184,6 @@ class LibreriaViewController : UIViewController {
         
         cartCount = UIButton(frame: CGRect(x: 330, y: 70, width: 35, height: 35))
         cartCount?.setImage(UIImage(named: "cart"), for: .normal)
-       // backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(cartCount!)
         
         
@@ -287,7 +285,7 @@ extension LibreriaViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
     let vista = UIView()
-        vista.backgroundColor = .nightBlue
+        vista.backgroundColor = .white//.nightBlue
     
     let etiqueta = UILabel(frame: CGRect(x: 120, y: 15, width: 200, height: 30))
         etiqueta.text = dataSource?.bookCategorias?[section].categoriaName ?? ""
@@ -326,7 +324,7 @@ extension LibreriaViewController : UITableViewDelegate{
             return bookCell
         }
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: width / 2 - 40, height: height / 4)
+            return CGSize(width: width/2 - 40, height: height/4 )//width / 2 - 40, height: height / 4)
         }
 
     }

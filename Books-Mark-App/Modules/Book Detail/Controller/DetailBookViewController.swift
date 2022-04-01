@@ -11,41 +11,32 @@ class DetailBookViewController: UIViewController {
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var productContentView : UIView?
-    var descriptionView : UIView?
-    var autorView : UIView?
+    var descriptionView = UIView()
+    var autorView = UIView()
     var backButton : UIButton?
-   // var descripcionButton : UIButton?
-  //  var detalleButton : UIButton?
     var libro : Libro?
     var contenedorText : UIView?
     var contenedorText1 : UIView?
     var contenedorText2 : UIView?
     var contenedorText3 : UIView?
-    var tituloLabel : UILabel?
+    var tituloLabel = UILabel()
     var autorLabel : UILabel?
-    var autorLabel2 : UILabel?
+    var autorLabel2 = UILabel()
     var autorLabel3 : UILabel?
     var categoriaLabel : UILabel?
     var precioLabel : UILabel?
     var iconRated : UIImageView?
-//    var backText : UILabel?
     var autorFoto : UIImageView?
     var descripLabel : UILabel?
-    
-    var darkBlueTextColor = UIColor(displayP3Red: 27/255, green: 38/255, blue: 44/255, alpha: 1)
-    var blueTextColor = UIColor(displayP3Red: 15/255, green: 76/255, blue: 117/255, alpha: 1)
-    var lightBTextColor = UIColor(displayP3Red: 50/255, green: 130/255, blue: 184/255, alpha: 1)
-    var whiteTextColor = UIColor(displayP3Red: 187/255, green: 225/255, blue: 250/255, alpha: 1)
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        view.backgroundColor = darkBlueTextColor// pantalla de detalle
+        view.backgroundColor = .nightBlue// pantalla de detalle
         initUI()
     }
     
     func initUI(){
-        
         createProductView()
         createDescription()
         autorDescription()
@@ -57,23 +48,18 @@ class DetailBookViewController: UIViewController {
         topImageView?.layer.cornerRadius = 15
         view.addSubview(topImageView!)
         
-        backButton = UIButton(frame: CGRect(x: 10, y: 45, width: 20, height: 20))
-        backButton?.setImage(UIImage(named: "backButton"), for: .normal)
-        backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        view.addSubview(backButton!)
+        view.addSubview(tituloLabel)
+        tituloLabel.text = libro?.tituloLibro ?? ""
+        tituloLabel.textColor = .nightBlue
+        tituloLabel.font = UIFont(name: "Helvetica Bold", size: 24)
+        tituloLabel.addAnchorsAndSize(width: nil, height: 30, left: Dimensions.grid4, top: 50, right: Dimensions.grid4, bottom: nil , withAnchor: nil, relativeToView: autorView)
         
-        
-        tituloLabel = UILabel(frame: CGRect(x: 15, y: 75, width: 250, height: 100))
-        tituloLabel?.text = libro?.tituloLibro ?? ""
-        tituloLabel?.textColor = .nightBlue
-        tituloLabel?.font = UIFont(name: "Helvetica Bold", size: 30)
-        view.addSubview(tituloLabel!)
 
     }
 
     func createProductView(){
-        productContentView = UIView(frame: CGRect(x: 15, y: 150 , width: width - 30 , height: height/4))
-        productContentView?.backgroundColor = darkBlueTextColor
+        productContentView = UIView(frame: CGRect(x: 15, y: 150 , width: width - 30 , height: height/3))
+        productContentView?.backgroundColor = .nightBlue
         productContentView?.layer.masksToBounds = true
         productContentView?.layer.cornerRadius = 10
         view.addSubview(productContentView!)
@@ -91,20 +77,20 @@ class DetailBookViewController: UIViewController {
         
         autorLabel = UILabel(frame: CGRect(x: 20, y: 75, width: 200, height: 100))
         autorLabel?.text = libro?.autor ?? ""
-        autorLabel?.textColor = blueTextColor
+        autorLabel?.textColor = .darkBlue
         autorLabel?.font = UIFont(name: "Arial Bold", size: 18)
         productContentView?.addSubview(autorLabel!)
         
         categoriaLabel = UILabel(frame: CGRect(x: 20, y: 100, width: 200, height: 100))
         categoriaLabel?.text = libro?.category ?? ""
         categoriaLabel?.font = UIFont(name: "Helvetica Bold", size: 18)
-        categoriaLabel?.textColor = blueTextColor
+        categoriaLabel?.textColor = .darkBlue
         productContentView?.addSubview(categoriaLabel!)
         
-        precioLabel = UILabel(frame: CGRect(x: 20, y: 145, width: 100, height: 50))
-        precioLabel?.text = "Preio:\n$\(String(describing: libro?.precio ?? 0))0MX" 
+        precioLabel = UILabel(frame: CGRect(x: 20, y: 145, width: 150, height: 50))
+        precioLabel?.text = "Precio: $\(String(describing: libro?.precio ?? 500))0MX"
         precioLabel?.font = UIFont(name: "Helvetica Bold", size: 16)
-        precioLabel?.textColor = lightBTextColor
+        precioLabel?.textColor = .seaBlue
         productContentView?.addSubview(precioLabel!)
         
         iconRated = UIImageView (frame: CGRect(x: 300, y: 0, width: 60, height: 60))
@@ -116,76 +102,68 @@ class DetailBookViewController: UIViewController {
     }
     
     func createDescription(){
-        descriptionView = UIView(frame: CGRect(x: 15, y: 380, width: width - 30, height: 200))
-        descriptionView?.backgroundColor = .clear
-        descriptionView?.layer.masksToBounds = true
-        descriptionView?.layer.cornerRadius = 10
-        view.addSubview(descriptionView!)
+
+        view.addSubview(descriptionView)
+        descriptionView.backgroundColor = .clear
+        descriptionView.layer.masksToBounds = true
+        descriptionView.layer.cornerRadius = 10
+        descriptionView.addAnchorsAndSize(width: nil, height: 100, left: Dimensions.grid4, top: nil, right: Dimensions.grid4, bottom: 180 , withAnchor: nil, relativeToView: autorView)
         
         contenedorText1 = UIView(frame: CGRect(x: 0, y: 0, width: width - 25, height: height/4))
-        contenedorText1?.backgroundColor = darkBlueTextColor
+        contenedorText1?.backgroundColor = .nightBlue
         contenedorText1?.layer.masksToBounds = true
         contenedorText1?.layer.cornerRadius = 10
-        descriptionView?.addSubview(contenedorText1!)
+        descriptionView.addSubview(contenedorText1!)
         
-        contenedorText2 = UIView(frame: CGRect(x: 0, y: 60, width: width - 25, height: height/4))
+        contenedorText2 = UIView(frame: CGRect(x: 0, y: 10, width: width - 25, height: height/2))
         contenedorText2?.backgroundColor = .white
         contenedorText2?.layer.masksToBounds = true
         contenedorText2?.layer.cornerRadius = 10
-        descriptionView?.addSubview(contenedorText2!)
+        descriptionView.addSubview(contenedorText2!)
         
-        autorLabel3 = UILabel(frame: CGRect(x: 15, y: 20, width: width - 25, height: height/4))
+        autorLabel3 = UILabel(frame: CGRect(x: 10, y: 15, width: width - 32, height: 100))
         autorLabel3?.text = libro?.descripcion ?? ""
-        autorLabel3?.textColor = blueTextColor
+        autorLabel3?.textColor = .darkBlue
         autorLabel3?.numberOfLines = 0
         autorLabel3?.adjustsFontSizeToFitWidth = true
-        autorLabel3?.font = UIFont(name: "Arial Bold", size: 18)
-        descriptionView?.addSubview(autorLabel3!)
+        autorLabel3?.font = UIFont(name: "Arial Bold", size: 16)
+        descriptionView.addSubview(autorLabel3!)
         
-        descripLabel = UILabel(frame: CGRect(x: 15, y: 25, width: 200, height: 100))
+        descripLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 200, height: 50))
         descripLabel?.text = "Descripción:"
-        descripLabel?.textColor = blueTextColor
+        descripLabel?.textColor = .seaBlue
         descripLabel?.numberOfLines = 0
         descripLabel?.adjustsFontSizeToFitWidth = true
-        descripLabel?.font = UIFont(name: "Arial Bold", size: 26)
-        descriptionView?.addSubview(descripLabel!)
+        descripLabel?.font = UIFont(name: "Arial Bold", size: 24)
+        descriptionView.addSubview(descripLabel!)
     }
     
     func autorDescription(){
-        autorView = UIView(frame: CGRect(x: 10, y: 600, width: width - 30, height: 200))
-        autorView?.backgroundColor = darkBlueTextColor
-        autorView?.layer.masksToBounds = true
-        autorView?.layer.cornerRadius = 10
-        view.addSubview(autorView!)
+
+        view.addSubview(autorView)
+        autorView.backgroundColor = .clear
+        autorView.layer.masksToBounds = true
+        autorView.layer.cornerRadius = 10
+        autorView.addAnchorsAndSize(width: nil, height: 130, left: Dimensions.grid4, top: nil, right: Dimensions.grid4, bottom: 30, withAnchor: nil, relativeToView: nil)
         
         contenedorText2 = UIView(frame: CGRect(x: 10, y: 0, width: width - 25, height: height))
         contenedorText2?.backgroundColor = .white
         contenedorText2?.layer.masksToBounds = true
         contenedorText2?.layer.cornerRadius = 10
-        autorView?.addSubview(contenedorText2!)
+        autorView.addSubview(contenedorText2!)
         
-        autorLabel = UILabel(frame: CGRect(x: 160, y: 480, width: 300, height: 300))
-        autorLabel?.text = libro?.autor ?? ""
-        autorLabel?.textColor = darkBlueTextColor
-        autorLabel?.font = UIFont(name: "Arial Bold", size: 24)
-        view?.addSubview(autorLabel!)
-        autorLabel2 = UILabel(frame: CGRect(x: 137, y: 550, width: 230, height: 300))
-        autorLabel2?.text = libro?.autorInfo ?? ""
-        autorLabel2?.textColor = blueTextColor
-        autorLabel2?.numberOfLines = 0
-        autorLabel2?.adjustsFontSizeToFitWidth = true
-        autorLabel2?.font = UIFont(name: "Arial Bold", size: 14)
-        view.addSubview(autorLabel2!)
+        view.addSubview(autorLabel2)
+        autorLabel2.text = libro?.autorInfo ?? ""
+        autorLabel2.textColor = .darkBlue
+        autorLabel2.numberOfLines = 0
+        autorLabel2.adjustsFontSizeToFitWidth = true
+        autorLabel2.font = UIFont(name: "Arial Bold", size: 14)
+        autorLabel2.addAnchorsAndSize(width: nil, height: 100, left: Dimensions.grid9_2, top: nil, right: Dimensions.grid4, bottom: 50, withAnchor: nil, relativeToView: nil)
                 
         autorFoto = UIImageView (frame: CGRect(x: 0, y: 20, width: 110, height: 150))
         autorFoto?.image = UIImage(named: libro?.autorFoto ?? "")
         autorFoto?.contentMode = .scaleAspectFill
-        autorView?.addSubview(autorFoto!)
+        autorView.addSubview(autorFoto!)
     }
 
-    @objc func backAction(){
-     print("Back")
-     dismiss(animated: true)
-    }
-    
 }
