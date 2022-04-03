@@ -2,7 +2,8 @@ README.MD
 # Books-Mark-App
 Books Challenge !
 This repository was created by Marco A. Cruz Velazquez
-This is a Kodemia IOS's boopCamp complete challenge: APPBOOK
+This is Kodemia IOS's bootCamp completed challenge: APPBOOK
+An application which simulates a mobile book Store. Full of Desing and Powerful. 
 
 #Content
 This proyect has three branches for APP BOOK from Kodemia bootcamp: 
