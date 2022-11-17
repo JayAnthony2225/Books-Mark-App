@@ -7,7 +7,7 @@
 import UIKit
 class LibreriaViewController : UIViewController {
     
-    var bookTableView : UITableView?
+  private var bookTableView : UITableView?
     var backButton : UIButton?
     var holaLabel : UILabel?
     var logOut: UILabel?
